@@ -1,287 +1,125 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#17090b" />
-  <meta name="description" content="Yoshio Padilla — Computer Systems Engineering candidate focused on SAP, business process automation, data analytics and enterprise technology." />
-  <meta property="og:title" content="Yoshio Padilla | SAP, Automation & Data" />
-  <meta property="og:description" content="Computer Systems Engineering candidate bridging business processes and digital solutions." />
+  <meta name="theme-color" content="#020914" />
+  <meta name="description" content="Yoshio Padilla — Computer Systems Engineering focused on SAP, business process automation and data analytics." />
+  <meta property="og:title" content="Yoshio Padilla | Enterprise Technology & Automation" />
+  <meta property="og:description" content="Where business complexity becomes intelligent systems." />
   <meta property="og:type" content="website" />
-  <title>Yoshio Padilla | SAP, Automation & Data</title>
+  <title>Yoshio Padilla | Enterprise Technology & Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="ambient ambient--one" aria-hidden="true"></div>
-  <div class="ambient ambient--two" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  <div class="page-atmosphere" aria-hidden="true">
+    <div class="atmosphere-glow atmosphere-glow--a"></div>
+    <div class="atmosphere-glow atmosphere-glow--b"></div>
+    <div class="particle-field" id="particleField"></div>
+  </div>
 
   <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Yoshio Padilla home">
-        <span class="brand-mark">YP</span>
-        <span class="brand-name">Yoshio Padilla</span>
-      </a>
-
+    <div class="shell header-inner">
+      <a class="monogram" href="#top" aria-label="Yoshio Padilla home">YP</a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <button type="button" class="nav-future" data-phase="experience" data-i18n="nav.experience">Experience</button>
+        <button type="button" class="nav-future" data-phase="projects" data-i18n="nav.projects">Projects</button>
+        <button type="button" class="nav-future" data-phase="skills" data-i18n="nav.skills">Skills</button>
+        <button type="button" class="nav-future" data-phase="education" data-i18n="nav.education">Education</button>
+        <button type="button" class="nav-future" data-phase="contact" data-i18n="nav.contact">Contact</button>
       </nav>
-
-      <div class="header-actions">
-        <a class="icon-link" href="https://github.com/YosPadilla" target="_blank" rel="noreferrer" aria-label="GitHub profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.84.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.84a9.5 9.5 0 0 1 2.5.34c1.91-1.3 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
-        </a>
-        <a class="icon-link" href="https://www.linkedin.com/in/yoshio-p-889804291/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.34 3.5A2.34 2.34 0 1 1 5.34 8.18a2.34 2.34 0 0 1 0-4.68ZM3.3 9.8h4.08V21H3.3V9.8Zm6.62 0h3.9v1.53h.05c.55-1.03 1.87-2.12 3.85-2.12 4.12 0 4.88 2.71 4.88 6.24V21h-4.07v-4.92c0-1.18-.02-2.68-1.64-2.68-1.64 0-1.89 1.28-1.89 2.6V21H9.92V9.8Z"/></svg>
-        </a>
-        <a class="button button--small" href="mailto:yoshio99@live.com.mx">Contact</a>
+      <div class="header-tools">
+        <div class="language-switch" aria-label="Language">
+          <button type="button" data-lang="en" class="is-active">EN</button><span>/</span><button type="button" data-lang="es">ES</button><i aria-hidden="true"></i>
+        </div>
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.7 8.7 0 1 0 20.2 15.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.1M12 19.9V22M4.9 4.9l1.5 1.5m11.2 11.2 1.5 1.5M2 12h2.1M19.9 12H22M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"/></svg>
+        </button>
+        <button type="button" class="button button--header cv-placeholder" data-i18n="nav.cv">Download CV</button>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span><span></span></button>
       </div>
-
-      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-nav" hidden>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="mailto:yoshio99@live.com.mx">Contact</a>
     </div>
   </header>
 
+  <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <div class="mobile-panel__top"><span class="mobile-mark">YP</span><button class="mobile-close" type="button" aria-label="Close menu">×</button></div>
+    <nav aria-label="Mobile navigation">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <button type="button" data-phase="experience" data-i18n="nav.experience">Experience</button>
+      <button type="button" data-phase="projects" data-i18n="nav.projects">Projects</button>
+      <button type="button" data-phase="skills" data-i18n="nav.skills">Skills</button>
+      <button type="button" data-phase="education" data-i18n="nav.education">Education</button>
+      <button type="button" data-phase="contact" data-i18n="nav.contact">Contact</button>
+    </nav>
+    <div class="mobile-panel__footer">
+      <div class="language-switch language-switch--mobile"><button type="button" data-lang="en" class="is-active">EN</button><span>/</span><button type="button" data-lang="es">ES</button></div>
+      <button type="button" class="button cv-placeholder" data-i18n="nav.cv">Download CV</button>
+    </div>
+  </aside>
+  <button class="panel-scrim" type="button" aria-label="Close menu" hidden></button>
+
   <main>
-    <section class="hero container">
-      <div class="hero-copy reveal">
-        <div class="eyebrow"><span class="status-dot"></span> Graduating December 2026 · Open to EU opportunities</div>
-        <h1>Bridging <span>business processes</span> and digital solutions.</h1>
-        <p class="hero-lead">
-          Computer Systems Engineering candidate with professional experience across SAP-enabled operations,
-          process automation, procurement, logistics, manufacturing and data analytics.
-        </p>
-        <div class="hero-role">SAP <i></i> Business Process Automation <i></i> Data Analytics</div>
-        <div class="hero-actions">
-          <a class="button" href="#experience">Explore experience</a>
-          <a class="text-link" href="mailto:yoshio99@live.com.mx">yoshio99@live.com.mx <span>↗</span></a>
-        </div>
-        <div class="hero-meta">
-          <div><span>Work authorization</span><strong>Portuguese / EU Citizen</strong></div>
-          <div><span>Based in</span><strong>Saltillo, Mexico</strong></div>
-          <div><span>Mobility</span><strong>Open to relocation in Europe</strong></div>
+    <section class="hero shell" id="home">
+      <svg class="signal-lines" viewBox="0 0 1200 690" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="signalGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".45" stop-color="currentColor" stop-opacity=".45"/><stop offset="1" stop-color="currentColor" stop-opacity=".04"/></linearGradient></defs>
+        <path class="signal-path signal-path--1" d="M-80 115 C170 55 350 180 585 100 S990 45 1285 145" />
+        <path class="signal-path signal-path--2" d="M-100 150 C155 86 350 224 610 130 S1010 78 1290 177" />
+        <path class="signal-path signal-path--3" d="M-100 184 C140 122 362 262 630 158 S1025 111 1300 210" />
+        <path class="signal-path signal-path--4" d="M120 650 C310 555 420 495 548 360 S805 175 1110 250" />
+        <circle class="signal-pulse" r="3"><animateMotion dur="7s" repeatCount="indefinite" path="M-80 115 C170 55 350 180 585 100 S990 45 1285 145" /></circle>
+      </svg>
+
+      <div class="hero-copy" data-enter="1">
+        <div class="citizenship-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h8.5A2.5 2.5 0 0 1 18 6v14H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z"/><path d="M8.5 8.5h6M8.5 12h6M9 16h2.5"/><circle cx="15.5" cy="16" r="1.5"/></svg><span data-i18n="hero.citizen">EU Citizen · Portuguese & Mexican</span></div>
+        <h1>Yoshio Padilla</h1>
+        <p class="discipline" data-i18n="hero.discipline">Computer Systems Engineering</p>
+        <p class="focus">SAP <span>·</span> Business Process Automation <span>·</span> Data Analytics</p>
+        <blockquote data-i18n="hero.statement">Where business complexity becomes intelligent systems.</blockquote>
+        <p class="hero-summary" data-i18n="hero.summary">Combining enterprise processes, automation and data to build practical digital solutions across procurement, logistics and manufacturing environments.</p>
+        <div class="hero-actions"><a class="button button--primary" href="#about" data-i18n="hero.work">Explore my work</a><button type="button" class="button button--secondary cv-placeholder" data-i18n="nav.cv">Download CV</button></div>
+        <div class="social-links" aria-label="Professional profiles">
+          <a href="https://www.linkedin.com/in/yoshio-p-889804291/" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5V20M5 4.4v.1M10 20v-6.3c0-2.5 4-3.2 4-0.1V20M10 10v10M14 13.1c.7-2.2 5-3.1 5 1.2V20"/></svg>LinkedIn</a>
+          <a href="https://github.com/YosPadilla" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.4 1.4-4.4-2.4-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7A5.2 5.2 0 0 0 18.8 5 4.8 4.8 0 0 0 18.7 1S17.6.6 15 2.5a13.4 13.4 0 0 0-6 0C6.4.6 5.3 1 5.3 1A4.8 4.8 0 0 0 5.2 5a5.2 5.2 0 0 0-1.4 3.8c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>GitHub</a>
         </div>
       </div>
 
-      <div class="hero-visual reveal reveal-delay">
-        <div class="portrait-shell">
-          <div class="portrait-glow"></div>
-          <img src="assets/profile.png" alt="Portrait of Yoshio Padilla" />
-          <div class="portrait-card portrait-card--top">
-            <span>Current focus</span>
-            <strong>SAP · Automation</strong>
-          </div>
-          <div class="portrait-card portrait-card--bottom">
-            <span>Technology + business</span>
-            <strong>Enterprise solutions</strong>
-          </div>
+      <div class="hero-portrait" data-enter="2">
+        <div class="portrait-orbit portrait-orbit--one" aria-hidden="true"></div><div class="portrait-orbit portrait-orbit--two" aria-hidden="true"></div>
+        <div class="portrait-panel" id="portraitPanel">
+          <div class="portrait-grid" aria-hidden="true"></div><div class="portrait-halo" aria-hidden="true"></div>
+          <img src="assets/yoshio-portrait-cutout.webp" alt="Portrait of Yoshio Padilla" />
+          <div class="eu-float"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg><div><span data-i18n="hero.authorized">EU Work Authorized</span><strong data-i18n="hero.sponsorship">No sponsorship required</strong></div></div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to about"><span></span></a>
+    </section>
+
+    <div class="hero-transition" aria-hidden="true"><span></span></div>
+
+    <section class="about-section" id="about">
+      <div class="shell">
+        <div class="section-intro reveal"><span class="section-index">01 / <span data-i18n="about.label">ABOUT</span></span><h2 data-i18n="about.title">Technology works better when you understand the business behind it.</h2></div>
+        <div class="about-layout">
+          <div class="about-narrative reveal"><p data-i18n="about.p1">My path has crossed customer-facing operations, materials management, manufacturing and enterprise technology. That progression taught me to look at systems from both sides: how people work and how technology can make the process better.</p><p data-i18n="about.p2">Today I work with SAP GUI, Python, Microsoft Power Platform and data tools to translate operational needs into practical automation, traceability and decision-support solutions.</p></div>
+          <div class="about-note reveal"><span data-i18n="about.noteLabel">Direction</span><p data-i18n="about.note">Building toward SAP, enterprise technology and digital transformation roles where business context matters as much as technical execution.</p></div>
+        </div>
+        <div class="pillars" aria-label="Core profile pillars">
+          <article class="pillar reveal"><div class="pillar-topline" aria-hidden="true"></div><div class="pillar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11M8 20v-5h8v5M8 10h.01M12 10h.01M16 10h.01"/></svg></div><h3 data-i18n="pillars.business">Business Processes</h3><p>Procurement · Logistics · Manufacturing · Inventory</p></article>
+          <article class="pillar reveal"><div class="pillar-topline" aria-hidden="true"></div><div class="pillar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9h4M7 12h7"/></svg></div><h3 data-i18n="pillars.enterprise">Enterprise Technology</h3><p>SAP GUI · ERP Workflows · Power Platform · Automation</p></article>
+          <article class="pillar reveal"><div class="pillar-topline" aria-hidden="true"></div><div class="pillar-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/><path d="M2 19h20"/></svg></div><h3 data-i18n="pillars.data">Data & Intelligence</h3><p>Python · Power BI · SQL · Generative AI</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section section--soft" id="about">
-      <div class="container split-grid">
-        <div class="section-heading reveal">
-          <span class="kicker">01 · Profile</span>
-          <h2>Technology makes more sense when it solves a business problem.</h2>
-        </div>
-        <div class="about-copy reveal">
-          <p>
-            I am a Computer Systems Engineering candidate at Instituto Tecnológico de Saltillo, graduating in December 2026.
-            My professional path has moved through customer-facing operations, materials management, manufacturing and now enterprise technology.
-          </p>
-          <p>
-            At ml&amp;s México I contribute to process improvement and digitalization initiatives using SAP GUI, Python,
-            Microsoft Power Platform, Power BI and Excel. I enjoy understanding how a process works, identifying friction,
-            and translating that need into a practical digital solution.
-          </p>
-          <p>
-            I am particularly interested in early-career opportunities in SAP consulting, Solution Advisory, Customer Success,
-            business process transformation and enterprise automation across Europe.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="experience">
-      <div class="section-heading section-heading--row reveal">
-        <div>
-          <span class="kicker">02 · Experience</span>
-          <h2>Built across operations, industry and technology.</h2>
-        </div>
-        <p>Selected experience showing the progression from business operations to enterprise automation.</p>
-      </div>
-
-      <div class="timeline">
-        <article class="experience-card reveal">
-          <div class="experience-date">2026 — Present</div>
-          <div class="experience-main">
-            <div class="experience-title">
-              <div><h3>Systems Intern — Customs Compliance</h3><p>ml&amp;s México · Arteaga, Mexico</p></div>
-              <span class="tag tag--accent">Current</span>
-            </div>
-            <p>
-              Developing automation and process-improvement solutions across SAP material master activities,
-              electronic customs record auditing, procurement documentation and operational visibility.
-            </p>
-            <div class="metric-grid">
-              <div><strong>100+</strong><span>materials per recurring SAP batch</span></div>
-              <div><strong>90 → 10 min</strong><span>selected SAP workflow</span></div>
-              <div><strong>~30 users</strong><span>Power Platform workflow</span></div>
-            </div>
-            <div class="chip-row"><span>SAP GUI</span><span>Python</span><span>Power Apps</span><span>Power Automate</span><span>Power BI</span></div>
-          </div>
-        </article>
-
-        <article class="experience-card reveal">
-          <div class="experience-date">2021 — 2025</div>
-          <div class="experience-main">
-            <div class="experience-title"><div><h3>CNC Designer &amp; Operator</h3><p>Mueblerías López · Saltillo, Mexico</p></div></div>
-            <p>
-              Translated customer requirements into manufacturable CNC designs, optimized MDF and wood layouts,
-              estimated materials and production costs, and supported the process from requirement to finished product.
-            </p>
-            <div class="chip-row"><span>Manufacturing</span><span>Customer Requirements</span><span>Cost Estimation</span><span>Vectric Aspire</span></div>
-          </div>
-        </article>
-
-        <article class="experience-card reveal">
-          <div class="experience-date">2020</div>
-          <div class="experience-main">
-            <div class="experience-title"><div><h3>Materials Supervisor</h3><p>Phoenix de México · Saltillo, Mexico</p></div></div>
-            <p>
-              Coordinated warehouse personnel, inbound material flow and FIFO inventory controls for a government hygiene-kit supply project,
-              designing a replenishment approach that supported production continuity.
-            </p>
-            <div class="chip-row"><span>Materials Management</span><span>Inventory</span><span>ERP</span><span>FIFO</span><span>Team Leadership</span></div>
-          </div>
-        </article>
-
-        <article class="experience-card reveal">
-          <div class="experience-date">2016 — 2020</div>
-          <div class="experience-main">
-            <div class="experience-title"><div><h3>Assistant Store Manager — Electronics</h3><p>Coppel S.A. de C.V. · Saltillo, Mexico</p></div></div>
-            <p>
-              Managed day-to-day retail operations, team allocation, inventory controls, warranties, customer service,
-              merchandising decisions and employee training in a customer-facing environment.
-            </p>
-            <div class="chip-row"><span>Customer Service</span><span>Sales Operations</span><span>Inventory</span><span>Training</span><span>Leadership</span></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section section--soft" id="projects">
-      <div class="container">
-        <div class="section-heading section-heading--row reveal">
-          <div><span class="kicker">03 · Selected Work</span><h2>Projects with business context.</h2></div>
-          <p>Professional case studies are intentionally high-level to protect internal information and confidential data.</p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project project--featured reveal">
-            <div class="project-top"><span class="project-number">01</span><span class="tag tag--private">Professional · Private</span></div>
-            <h3>SAP Material Master Automation</h3>
-            <p>
-              Python and SAP GUI Scripting workflow for recurring MM01/MM02 material master activities, including input validation,
-              exception handling and a user-friendly interface for repeatable execution.
-            </p>
-            <div class="project-result"><span>Business impact</span><strong>Reduced a selected recurring workflow from ~90 minutes to ~10 minutes.</strong></div>
-            <div class="chip-row"><span>SAP GUI</span><span>MM01/MM02</span><span>Python</span><span>Automation</span></div>
-          </article>
-
-          <article class="project reveal">
-            <div class="project-top"><span class="project-number">02</span><span class="tag tag--private">Professional · Private</span></div>
-            <h3>Electronic Customs Records Audit</h3>
-            <p>
-              Structured a previously manual document-review process into an automated workflow that classifies,
-              cross-checks and reports missing or inconsistent evidence across electronic customs records.
-            </p>
-            <div class="chip-row"><span>Python</span><span>OCR</span><span>Business Rules</span><span>Excel</span></div>
-          </article>
-
-          <article class="project reveal">
-            <div class="project-top"><span class="project-number">03</span><span class="tag tag--private">Professional · Private</span></div>
-            <h3>Procurement &amp; Logistics Workflow</h3>
-            <p>
-              Power Platform solution replacing fragmented email/message tracking with centralized documentation,
-              required-file controls, status visibility, role-based access and audit history.
-            </p>
-            <div class="chip-row"><span>Power Apps</span><span>Microsoft Lists</span><span>Power Automate</span><span>Process Design</span></div>
-          </article>
-
-          <article class="project project--public reveal">
-            <div class="project-media"><img src="assets/lab_01.jpeg" alt="Laboratory management system interface" /></div>
-            <div class="project-content">
-              <div class="project-top"><span class="project-number">04</span><span class="tag">Public project</span></div>
-              <h3>Laboratory Management System</h3>
-              <p>
-                Web application for access control and student registration in an Electronics/Analog laboratory,
-                with administrator roles, data validation and Oracle-backed records.
-              </p>
-              <div class="chip-row"><span>Python</span><span>Flask</span><span>Oracle Database</span><span>HTML/CSS</span></div>
-              <a class="project-link" href="https://github.com/YosPadilla/Sistema-para-Laboratorio-Electr-nica-Anal-gica" target="_blank" rel="noreferrer">View repository <span>↗</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="skills">
-      <div class="section-heading reveal"><span class="kicker">04 · Capabilities</span><h2>A hybrid profile: enterprise systems, automation and operations.</h2></div>
-      <div class="skills-grid">
-        <article class="skill-card reveal"><span>01</span><h3>SAP &amp; Enterprise</h3><p>SAP GUI · MM01/MM02 · Material Master · SAP GUI Scripting · ERP workflows</p></article>
-        <article class="skill-card reveal"><span>02</span><h3>Automation &amp; Development</h3><p>Python · SQL · Excel automation · REST/API fundamentals · workflow design</p></article>
-        <article class="skill-card reveal"><span>03</span><h3>Data &amp; Low-Code</h3><p>Power BI · Power Query · DAX · Power Apps · Power Automate · Microsoft Lists · SharePoint</p></article>
-        <article class="skill-card reveal"><span>04</span><h3>Business Processes</h3><p>Procurement · Logistics · Manufacturing · Inventory · Customs Compliance · Process Improvement</p></article>
-        <article class="skill-card reveal"><span>05</span><h3>AI-Assisted Work</h3><p>Generative AI for problem-solving, prototyping, documentation, context engineering and output validation</p></article>
-        <article class="skill-card reveal"><span>06</span><h3>Languages</h3><p>Spanish — Native · English — B2 / Professional working level · Mandarin Chinese — Basic</p></article>
-      </div>
-    </section>
-
-    <section class="section section--soft" id="education">
-      <div class="container credentials-grid">
-        <div class="section-heading reveal"><span class="kicker">05 · Education</span><h2>Learning with an enterprise focus.</h2></div>
-        <div class="credentials reveal">
-          <article><div><span>Expected Dec 2026</span><h3>Computer Systems Engineering</h3><p>Instituto Tecnológico de Saltillo · Saltillo, Mexico</p></div><strong>Engineering Degree Candidate</strong></article>
-          <article><div><span>2026 · In progress</span><h3>SAP Learning Hub — Student Edition</h3><p>SAP S/4HANA &amp; ERP learning path</p></div><strong>SAP</strong></article>
-          <article><div><span>Selected training</span><h3>Business, Logistics &amp; Networking</h3><p>Harvard Business Publishing Education · Secretaría de Economía · Cisco Networking Academy</p></div><strong>Continuous Learning</strong></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact">
-      <div class="container contact-inner reveal">
-        <span class="kicker">06 · Contact</span>
-        <h2>Interested in SAP, consulting or enterprise technology?</h2>
-        <p>I am open to early-career opportunities across Spain, Portugal, the Netherlands and the European Union.</p>
-        <div class="contact-actions">
-          <a class="button button--light" href="mailto:yoshio99@live.com.mx">Email me</a>
-          <a class="button button--outline-light" href="https://www.linkedin.com/in/yoshio-p-889804291/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="button button--outline-light" href="https://github.com/YosPadilla" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-        <div class="contact-foot"><span>Portuguese &amp; Mexican citizen</span><span>EU work authorization</span><span>Open to relocation</span></div>
-      </div>
-    </section>
+    <section class="phase-preview" aria-label="Next portfolio phases"><div class="shell phase-preview__inner reveal"><span data-i18n="phase.eyebrow">NEXT BUILD PHASE</span><p data-i18n="phase.copy">Experience, selected case studies, skills, education and the final contact flow will be added after this visual system is approved.</p></div></section>
   </main>
-
-  <footer>
-    <div class="container footer-inner"><span>© <span id="year"></span> Yoshio Padilla</span><a href="#top">Back to top ↑</a></div>
-  </footer>
-
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
 </body>
 </html>
