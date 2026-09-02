@@ -1,520 +1,105 @@
-// script.js
 (() => {
-  // Year update
-  const y = document.getElementById("year");
-  if (y) y.textContent = new Date().getFullYear();
+  const base = document.createElement('script');
+  base.src = 'script-base.js';
+  base.onload = () => {
+    const root = document.documentElement;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Scroll Reveal Observer
-  const revealEls = document.querySelectorAll("[data-reveal]");
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add("revealed");
-        io.unobserve(e.target);
+    const narrative = {
+      en: {
+        'hero.summary':'I work at the intersection of operations and technology — understanding how work actually happens, then using SAP, automation and data to make it clearer, more repeatable and easier to act on.',
+        'perspective.overline':'THE THROUGHLINE',
+        'perspective.title':'I learned the business before I learned to automate it.',
+        'perspective.p1':'My path did not begin in software. It began where business decisions become real: with customers, inventory, materials, production, deadlines and imperfect information. That matters because enterprise systems do not live in diagrams — they live inside people’s work.',
+        'perspective.p2':'Today, SAP, automation and data are how I turn that operating context into clearer, repeatable systems — not technology for its own sake, but technology shaped around the process it has to improve.',
+        'perspective.manifesto':'See the operation. Make the friction visible. Design the system. Prove the change.',
+        'journey.title':'Before I built systems, I learned what they have to survive.',
+        'journey.intro':'Retail taught me people. Materials taught me flow. Manufacturing taught me constraints. Enterprise technology gave me the tools to connect them.',
+        'journey.coppel.title':'People before process.',
+        'journey.coppel.copy':'Retail made every decision visible immediately: a customer had a need, a team needed direction, inventory had limits and the answer still had to make business sense. It taught me to understand the person before trying to optimize the process.',
+        'journey.coppel.signal':'Listen before you design.',
+        'journey.phoenix.title':'Flow before optimization.',
+        'journey.phoenix.copy':'Warehouse operations showed me that performance is rarely about one task. Receiving, FIFO, inventory, replenishment and people all move as one system — and one weak handoff can slow everything downstream.',
+        'journey.phoenix.signal':'Optimize the flow, not the isolated task.',
+        'journey.mueblerias.title':'Reality before elegance.',
+        'journey.mueblerias.copy':'CNC work forced ideas to meet material, cost, dimensions, waste and production time. A design could look perfect on screen and still fail in the shop. That taught me to judge solutions by whether they survive real constraints.',
+        'journey.mueblerias.signal':'Good solutions survive real constraints.',
+        'journey.mls.title':'Systems that connect the whole picture.',
+        'journey.mls.copy':'At ml&s, the earlier lessons finally became technical building blocks. SAP, Python, Power Platform and data tools let me turn recurring friction into validation, automation, traceability and shared visibility.',
+        'journey.mls.signal':'Make complexity visible, then make it repeatable.',
+        'systems.overline':'FROM FRICTION TO SYSTEM',
+        'systems.title':'When friction repeats, I look for the system hiding underneath.',
+        'systems.intro':'These case studies show the same pattern at different scales: make the problem visible, structure what matters, automate what should be repeatable, and leave people with a clearer decision. The interfaces are illustrative; the outcomes are real.',
+        'systems.sap.copy':'What looked like repetitive SAP entry was really a control problem: the workflow depended on complete inputs and consistent execution. I moved validation to the front, then automated the repeatable MM01/MM02 sequence.',
+        'systems.audit.copy':'What looked like document review was really an evidence-mapping problem. I reframed fragmented folders and archives as a structured classification flow that identifies evidence, cross-checks information and surfaces exceptions.',
+        'systems.power.copy':'What looked like follow-up by email was really a visibility problem. I centralized documentation, roles and status so Procurement and Logistics could work from one shared operational record instead of reconstructing context from messages.',
+        'systems.lab.copy':'A smaller academic system built around the same principle: translate operating rules into software. The application turns access roles, student registration and validation requirements into a persistent Oracle-backed workflow.',
+        'cap.title':'A stack is useful only when it can change the work.',
+        'next.title':'The next chapter is about scale.',
+        'next.copy':'I am ready to bring this operating perspective to SAP, enterprise technology, business process transformation and customer-facing technology roles across Europe.'
+      },
+      es: {
+        'hero.summary':'Trabajo en la intersección entre operación y tecnología: entiendo cómo sucede realmente el trabajo y después utilizo SAP, automatización y datos para volverlo más claro, repetible y accionable.',
+        'perspective.overline':'EL HILO CONDUCTOR',
+        'perspective.title':'Aprendí el negocio antes de aprender a automatizarlo.',
+        'perspective.p1':'Mi trayectoria no comenzó en software. Comenzó donde las decisiones de negocio se vuelven reales: con clientes, inventario, materiales, producción, tiempos e información imperfecta. Eso importa porque los sistemas empresariales no viven en diagramas: viven dentro del trabajo de las personas.',
+        'perspective.p2':'Hoy, SAP, la automatización y los datos son la forma en que convierto ese contexto operativo en sistemas más claros y repetibles; no tecnología por sí misma, sino tecnología diseñada alrededor del proceso que debe mejorar.',
+        'perspective.manifesto':'Ver la operación. Hacer visible la fricción. Diseñar el sistema. Demostrar el cambio.',
+        'journey.title':'Antes de construir sistemas, aprendí lo que tienen que resistir.',
+        'journey.intro':'Retail me enseñó personas. Materiales me enseñó flujo. Manufactura me enseñó restricciones. La tecnología empresarial me dio las herramientas para conectarlo todo.',
+        'journey.coppel.title':'Personas antes que procesos.',
+        'journey.coppel.copy':'En retail cada decisión se hacía visible de inmediato: un cliente tenía una necesidad, un equipo requería dirección, el inventario tenía límites y la respuesta todavía debía tener sentido para el negocio. Aprendí a entender a la persona antes de intentar optimizar el proceso.',
+        'journey.coppel.signal':'Escuchar antes de diseñar.',
+        'journey.phoenix.title':'Flujo antes que optimización.',
+        'journey.phoenix.copy':'El almacén me mostró que el desempeño rara vez depende de una sola tarea. Recepción, PEPS, inventario, reabastecimiento y personas funcionan como un sistema, y una mala transferencia puede frenar todo lo que viene después.',
+        'journey.phoenix.signal':'Optimizar el flujo, no la tarea aislada.',
+        'journey.mueblerias.title':'Realidad antes que elegancia.',
+        'journey.mueblerias.copy':'El trabajo CNC obligaba a las ideas a enfrentarse con material, costo, dimensiones, desperdicio y tiempo de producción. Un diseño podía verse perfecto en pantalla y aun así fallar en taller. Aprendí a valorar las soluciones por su capacidad de sobrevivir restricciones reales.',
+        'journey.mueblerias.signal':'Las buenas soluciones sobreviven restricciones reales.',
+        'journey.mls.title':'Sistemas que conectan el panorama completo.',
+        'journey.mls.copy':'En ml&s, las lecciones anteriores finalmente se convirtieron en bloques técnicos. SAP, Python, Power Platform y las herramientas de datos me permitieron transformar fricción recurrente en validación, automatización, trazabilidad y visibilidad compartida.',
+        'journey.mls.signal':'Hacer visible la complejidad y después volverla repetible.',
+        'systems.overline':'DE FRICCIÓN A SISTEMA',
+        'systems.title':'Cuando la fricción se repite, busco el sistema que se esconde detrás.',
+        'systems.intro':'Estos casos muestran el mismo patrón en distintas escalas: hacer visible el problema, estructurar lo importante, automatizar lo que debe ser repetible y dejar a las personas con una decisión más clara. Las interfaces son ilustrativas; los resultados son reales.',
+        'systems.sap.copy':'Lo que parecía captura repetitiva en SAP era en realidad un problema de control: el flujo dependía de información completa y una ejecución consistente. Moví la validación al inicio y después automaticé la secuencia repetible de MM01/MM02.',
+        'systems.audit.copy':'Lo que parecía revisión documental era en realidad un problema de mapeo de evidencia. Replanteé carpetas y archivos fragmentados como un flujo estructurado que clasifica, cruza información y hace visibles las excepciones.',
+        'systems.power.copy':'Lo que parecía seguimiento por correo era en realidad un problema de visibilidad. Centralicé documentación, roles y estatus para que Compras y Logística trabajaran desde un mismo registro operativo en lugar de reconstruir contexto desde mensajes.',
+        'systems.lab.copy':'Un sistema académico más pequeño construido con el mismo principio: traducir reglas operativas a software. La aplicación convierte roles de acceso, registro de alumnos y requisitos de validación en un flujo persistente respaldado por Oracle.',
+        'cap.title':'Un stack solo es útil cuando puede cambiar el trabajo.',
+        'next.title':'El siguiente capítulo es escalar.',
+        'next.copy':'Estoy listo para llevar esta perspectiva operativa a roles de SAP, tecnología empresarial, transformación de procesos y tecnología de cara al cliente en Europa.'
       }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
-
-  // --- LOGIC SCROLL PROGRESS BAR ---
-  const scrollBar = document.getElementById('scrollBar');
-  const scrollText = document.getElementById('scrollText');
-
-  const updateScrollUI = () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-
-    if (scrollBar) scrollBar.style.height = `${scrollPercent}%`;
-    if (scrollText) scrollText.textContent = `${Math.round(scrollPercent)}%`;
-  };
-  window.addEventListener('scroll', updateScrollUI, { passive: true });
-  updateScrollUI();
-
-  // Spotlight Effect for Project Cards
-  const spotlightCards = document.querySelectorAll(".projectCard");
-  spotlightCards.forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-    });
-  });
-
-  // Mobile Menu
-  const burger = document.querySelector(".burger");
-  const mobileNav = document.getElementById("mobileNav");
-  if (burger && mobileNav) {
-    burger.addEventListener("click", () => {
-      const open = burger.getAttribute("aria-expanded") === "true";
-      burger.setAttribute("aria-expanded", String(!open));
-      mobileNav.hidden = open;
-    });
-    mobileNav.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => {
-        burger.setAttribute("aria-expanded", "false");
-        mobileNav.hidden = true;
-      });
-    });
-  }
-
-  // Typewriter Effect
-  const TypeWriter = function(txtElement, words, wait = 3000) {
-    this.txtElement = txtElement;
-    this.words = JSON.parse(words);
-    this.txt = '';
-    this.wordIndex = 0;
-    this.wait = parseInt(wait, 10);
-    this.type();
-    this.isDeleting = false;
-  };
-  TypeWriter.prototype.type = function() {
-    const current = this.wordIndex % this.words.length;
-    const fullTxt = this.words[current];
-
-    if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.txtElement.innerHTML = this.txt;
-
-    let typeSpeed = 100;
-    if (this.isDeleting) typeSpeed /= 2;
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-      typeSpeed = this.wait;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-      this.isDeleting = false;
-      this.wordIndex++;
-      typeSpeed = 500;
-    }
-    setTimeout(() => this.type(), typeSpeed);
-  };
-
-  const txtElement = document.querySelector('.txt-type');
-  if (txtElement) {
-    new TypeWriter(txtElement, txtElement.getAttribute('data-words'), txtElement.getAttribute('data-wait'));
-  }
-
-  // ===== LIGHTBOX PRO =====
-  const modal = document.getElementById("imageModal");
-  const modalImg = document.getElementById("lightboxImg");
-  const modalClose = document.getElementById("closeModal");
-  const modalPrev = document.getElementById("lightboxPrev");
-  const modalNext = document.getElementById("lightboxNext");
-  const modalCount = document.getElementById("lightboxCount");
-  const modalMeta = document.getElementById("lightboxMeta");
-  const modalCaption = document.getElementById("lightboxCaption");
-
-  let activeImages = [];
-  let activeIndex = 0;
-  let activeTitle = "Galería";
-
-  const renderLightbox = () => {
-    if (!modal || !modalImg) return;
-    if (!activeImages.length) return;
-
-    if (activeIndex < 0) activeIndex = activeImages.length - 1;
-    if (activeIndex >= activeImages.length) activeIndex = 0;
-
-    modalImg.src = activeImages[activeIndex];
-
-    if (modalCount) modalCount.textContent = `${activeIndex + 1} / ${activeImages.length}`;
-    if (modalMeta) modalMeta.textContent = activeTitle || "Galería";
-    if (modalCaption) modalCaption.textContent = "Esc para cerrar • ← → para navegar";
-
-    const disableNav = activeImages.length <= 1;
-    if (modalPrev) modalPrev.disabled = disableNav;
-    if (modalNext) modalNext.disabled = disableNav;
-  };
-
-  const openLightbox = (images, title, startIndex = 0) => {
-    if (!modal || !modalImg) return;
-    activeImages = images;
-    activeTitle = title || "Galería";
-    activeIndex = startIndex;
-
-    renderLightbox();
-    modal.showModal();
-  };
-
-  const closeModal = () => { if (modal) modal.close(); };
-
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-
-  if (modalPrev) modalPrev.addEventListener("click", (e) => {
-    e.stopPropagation();
-    activeIndex--;
-    renderLightbox();
-  });
-
-  if (modalNext) modalNext.addEventListener("click", (e) => {
-    e.stopPropagation();
-    activeIndex++;
-    renderLightbox();
-  });
-
-  if (modal) {
-    // Click en backdrop (fuera del contenido) cierra
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    // Teclado: flechas + escape
-    document.addEventListener("keydown", (e) => {
-      if (!modal.open) return;
-
-      if (e.key === "Escape") {
-        closeModal();
-        return;
-      }
-      if (e.key === "ArrowLeft") {
-        activeIndex--;
-        renderLightbox();
-      }
-      if (e.key === "ArrowRight") {
-        activeIndex++;
-        renderLightbox();
-      }
-    });
-  }
-
-  // ===== GALLERY LOGIC (cards) =====
-  const cards = document.querySelectorAll("[data-project][data-images]");
-  cards.forEach((card) => {
-    const raw = card.getAttribute("data-images") || "";
-    const title = card.getAttribute("data-title") || "Galería";
-    const images = raw.split(",").map(s => s.trim()).filter(Boolean);
-    if (!images.length) return;
-
-    const imgEl = card.querySelector(".projImg");
-    const countEl = card.querySelector(".projCount");
-    const dotsWrap = card.querySelector(".projDots");
-    const prevBtn = card.querySelector(".projArrow--prev");
-    const nextBtn = card.querySelector(".projArrow--next");
-    let idx = 0;
-
-    // Dots
-    if (dotsWrap) {
-      dotsWrap.innerHTML = "";
-      images.forEach((_, i) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.className = "dot" + (i === 0 ? " dot--active" : "");
-        b.setAttribute("aria-label", `Ir a imagen ${i + 1}`);
-        b.addEventListener("click", (e) => { e.stopPropagation(); idx = i; render(); });
-        dotsWrap.appendChild(b);
-      });
-    }
-
-    const getDots = () => Array.from(card.querySelectorAll(".dot"));
-
-    const render = () => {
-      if (idx < 0) idx = images.length - 1;
-      if (idx >= images.length) idx = 0;
-
-      if (imgEl) imgEl.src = images[idx];
-      if (countEl) countEl.textContent = `${idx + 1} / ${images.length}`;
-
-      const dots = getDots();
-      dots.forEach((d, i) => d.classList.toggle("dot--active", i === idx));
     };
 
-    if (nextBtn) nextBtn.addEventListener("click", (e) => { e.stopPropagation(); idx++; render(); });
-    if (prevBtn) prevBtn.addEventListener("click", (e) => { e.stopPropagation(); idx--; render(); });
+    const metricCopy = {
+      en:{overline:'MEASURED CHANGE',title:'When the outcome can be measured, I measure it.',copy:'Four signals of scale and change from the systems below — enough to show what moved without turning the story into a dashboard.',sap:'less execution time in a selected recurring workflow',sapNote:'Derived from ~90 min → ~10 min',audit:'manual review time per record before automation',auditNote:'Document-heavy records vary by complexity',power:'users supported by the shared workflow',powerNote:'Procurement + Logistics visibility',lab:'administrator roles modeled in the public system',labNote:'Role-aware access and validation'},
+      es:{overline:'CAMBIO MEDIDO',title:'Cuando el resultado puede medirse, lo mido.',copy:'Cuatro señales de escala y cambio de los sistemas que aparecen abajo: suficientes para mostrar qué cambió sin convertir la historia en un dashboard.',sap:'menos tiempo de ejecución en un flujo recurrente seleccionado',sapNote:'Derivado de ~90 min → ~10 min',audit:'tiempo de revisión manual por expediente antes de automatizar',auditNote:'Los expedientes varían según su complejidad',power:'usuarios soportados por el flujo compartido',powerNote:'Visibilidad entre Compras + Logística',lab:'roles administrativos modelados en el sistema público',labNote:'Acceso por roles y validación'}
+    };
 
-    // Lightbox trigger (solo imagen, flechas solo cambian imagen)
-    if (imgEl) {
-      imgEl.addEventListener("click", (e) => {
-        e.stopPropagation();
-        openLightbox(images, title, idx);
-      });
+    const style = document.createElement('style');
+    style.textContent = `.impact-ledger{position:relative;margin:38px 0 34px;padding:29px 0 30px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}.impact-ledger:before{content:"";position:absolute;top:-1px;left:-24%;width:22%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;filter:drop-shadow(0 0 8px rgba(56,189,248,.55))}.impact-ledger.is-counting:before{opacity:.9;animation:impactScan 2.2s cubic-bezier(.22,1,.36,1) forwards}@keyframes impactScan{to{left:104%}}.impact-ledger__intro{display:grid;grid-template-columns:.72fr 1.4fr 1fr;gap:34px;align-items:end;margin-bottom:28px}.impact-ledger__intro h3{margin:0;font-family:var(--serif);font-size:clamp(31px,3.3vw,44px);font-weight:600;line-height:1.02;letter-spacing:-.03em}.impact-ledger__intro p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}.impact-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--border)}.impact-metric{position:relative;min-height:190px;padding:23px 24px 20px 0;border-right:1px solid var(--border);opacity:.55;transform:translateY(10px);transition:opacity .48s cubic-bezier(.22,1,.36,1) var(--metric-delay),transform .48s cubic-bezier(.22,1,.36,1) var(--metric-delay),background-color .2s ease}.impact-metric:not(:first-child){padding-left:24px}.impact-metric:last-child{border-right:0}.impact-ledger.is-counting .impact-metric{opacity:1;transform:none}.impact-metric:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .68s cubic-bezier(.22,1,.36,1) calc(var(--metric-delay) + 240ms)}.impact-ledger.is-counting .impact-metric:after{width:58px}.impact-project{display:block;color:var(--soft);font-size:9px;font-weight:700;letter-spacing:.12em}.impact-metric>strong{display:flex;align-items:baseline;gap:4px;margin-top:16px;font-family:var(--serif);font-size:clamp(48px,5.4vw,68px);font-weight:600;line-height:.9;letter-spacing:-.05em;color:var(--text);font-variant-numeric:tabular-nums}.impact-metric>strong i{font-family:var(--sans);font-size:.34em;font-style:normal;color:var(--cyan);margin:0 1px;transform:translateY(-4px)}.impact-metric p{min-height:40px;margin:14px 0 0;color:var(--muted);font-size:12px;line-height:1.55}.impact-metric small{display:block;margin-top:8px;color:var(--soft);font-size:9px;line-height:1.5}.impact-range{white-space:nowrap}@media(hover:hover) and (pointer:fine){.impact-metric:hover{background:linear-gradient(180deg,var(--cyan-soft),transparent 68%)}}@media(max-width:900px){.impact-ledger__intro{grid-template-columns:1fr 1.6fr}.impact-ledger__intro>p{grid-column:2}.impact-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.impact-metric{border-bottom:1px solid var(--border)}.impact-metric:nth-child(2){border-right:0}.impact-metric:nth-child(3),.impact-metric:nth-child(4){border-bottom:0}.impact-metric:nth-child(3){padding-left:0}}@media(max-width:560px){.impact-ledger__intro{grid-template-columns:1fr;gap:12px}.impact-ledger__intro>p{grid-column:auto}.impact-ledger__intro h3{font-size:36px}.impact-metrics{grid-template-columns:1fr}.impact-metric,.impact-metric:not(:first-child){min-height:158px;padding:20px 0;border-right:0;border-bottom:1px solid var(--border)}.impact-metric:last-child{border-bottom:0}.impact-metric>strong{font-size:58px}}@media(prefers-reduced-motion:reduce){.impact-ledger:before{display:none}.impact-metric{opacity:1;transform:none}}`;
+    document.head.appendChild(style);
+
+    const stats = document.createElement('section');
+    stats.className = 'impact-ledger reveal';
+    stats.id = 'impactLedger';
+    stats.innerHTML = `<div class="impact-ledger__intro"><span class="chapter-overline" data-metric="overline"></span><h3 data-metric="title"></h3><p data-metric="copy"></p></div><div class="impact-metrics"><article class="impact-metric" style="--metric-delay:0ms"><span class="impact-project">SAP MATERIAL MASTER</span><strong><span class="countup" data-count="89" data-suffix="%">0</span></strong><p data-metric="sap"></p><small data-metric="sapNote"></small></article><article class="impact-metric" style="--metric-delay:90ms"><span class="impact-project">CUSTOMS RECORDS</span><strong class="impact-range"><span class="countup" data-count="10">0</span><i>–</i><span class="countup" data-count="30" data-suffix=" min">0</span></strong><p data-metric="audit"></p><small data-metric="auditNote"></small></article><article class="impact-metric" style="--metric-delay:180ms"><span class="impact-project">POWER PLATFORM</span><strong><span class="countup" data-count="30" data-prefix="~">0</span></strong><p data-metric="power"></p><small data-metric="powerNote"></small></article><article class="impact-metric" style="--metric-delay:270ms"><span class="impact-project">LAB SYSTEM</span><strong><span class="countup" data-count="2">0</span></strong><p data-metric="lab"></p><small data-metric="labNote"></small></article></div>`;
+    const firstSystem = document.querySelector('.system-story');
+    firstSystem?.parentNode.insertBefore(stats, firstSystem);
+
+    function applyNarrative(){
+      const lang = root.lang === 'es' ? 'es' : 'en';
+      Object.entries(narrative[lang]).forEach(([key,value])=>{const node=document.querySelector(`[data-i18n="${key}"]`);if(node)node.textContent=value});
+      stats.querySelectorAll('[data-metric]').forEach(node=>{node.textContent=metricCopy[lang][node.dataset.metric]||''});
     }
+    applyNarrative();
+    document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>requestAnimationFrame(applyNarrative)));
 
-    render();
-  });
-
-  // ===== SCROLLSPY (Nav activo) =====
-  const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
-  const mobileLinks = Array.from(document.querySelectorAll('#mobileNav a[href^="#"]'));
-
-  const allLinks = [...navLinks, ...mobileLinks];
-
-  const idToLinks = new Map();
-  allLinks.forEach(a => {
-    const id = (a.getAttribute("href") || "").replace("#", "");
-    if (!id) return;
-    if (!idToLinks.has(id)) idToLinks.set(id, []);
-    idToLinks.get(id).push(a);
-  });
-
-  const sections = Array.from(idToLinks.keys())
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  const setActive = (id) => {
-    // Desktop nav
-    navLinks.forEach(a => a.classList.toggle("nav__link--active", (a.getAttribute("href") === `#${id}`)));
-
-    // Mobile nav
-    mobileLinks.forEach(a => a.classList.toggle("active", (a.getAttribute("href") === `#${id}`)));
+    const render=(node,value)=>{node.textContent=`${node.dataset.prefix||''}${Math.round(value)}${node.dataset.suffix||''}`};
+    const animate=(node,delay)=>{if(node.dataset.counted)return;node.dataset.counted='1';const target=Number(node.dataset.count||0);if(reduced){render(node,target);return}setTimeout(()=>{const start=performance.now();const duration=1250;const tick=now=>{const t=Math.min(1,(now-start)/duration);render(node,target*(1-Math.pow(1-t,4)));if(t<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)},delay)};
+    const counts=[...stats.querySelectorAll('.countup')];
+    if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{if(!entries.some(e=>e.isIntersecting))return;stats.classList.add('is-visible','is-counting');counts.forEach((n,i)=>animate(n,i*75));io.disconnect()},{threshold:.32,rootMargin:'0px 0px -8% 0px'});io.observe(stats)}else{stats.classList.add('is-visible','is-counting');counts.forEach((n,i)=>animate(n,i*75))}
   };
-
-  if (sections.length) {
-    const spy = new IntersectionObserver((entries) => {
-      // elegimos el que más “domina” la vista
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-      if (visible && visible.target && visible.target.id) {
-        setActive(visible.target.id);
-      }
-    }, {
-      root: null,
-      threshold: [0.2, 0.35, 0.5, 0.65],
-      rootMargin: "-25% 0px -55% 0px"
-    });
-
-    sections.forEach(sec => spy.observe(sec));
-
-      // ===== BLOQUE 2: FILTROS =====
-  const filterBtns = Array.from(document.querySelectorAll(".filterBtn[data-filter]"));
-  const projectCards = Array.from(document.querySelectorAll(".projectCard[data-cats]"));
-  const filterCount = document.getElementById("filterCount");
-
-  const applyFilter = (filter) => {
-    let shown = 0;
-
-    projectCards.forEach(card => {
-      const cats = (card.getAttribute("data-cats") || "").split(/\s+/).filter(Boolean);
-      const match = (filter === "all") ? true : cats.includes(filter);
-
-      card.classList.toggle("is-hidden", !match);
-      if (match) shown++;
-    });
-
-    if (filterCount) {
-      const total = projectCards.length;
-      filterCount.textContent = `${shown} de ${total} mostrados`;
-    }
-  };
-
-  if (filterBtns.length && projectCards.length) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => {
-          b.classList.remove("is-active");
-          b.setAttribute("aria-selected", "false");
-        });
-        btn.classList.add("is-active");
-        btn.setAttribute("aria-selected", "true");
-
-        const f = btn.getAttribute("data-filter") || "all";
-        applyFilter(f);
-      });
-    });
-
-    // Init
-    applyFilter("all");
-  }
-
-  // ===== BLOQUE 2: CASE STUDY TOGGLE =====
-  const caseButtons = Array.from(document.querySelectorAll(".projectCard .caseBtn"));
-  caseButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const card = btn.closest(".projectCard");
-      if (!card) return;
-
-      const panel = card.querySelector(".casePanel");
-      const open = card.classList.contains("is-open");
-
-      // Cierra otros (para que no sea acordeón infernal)
-      document.querySelectorAll(".projectCard.is-open").forEach(other => {
-        if (other !== card) {
-          other.classList.remove("is-open");
-          const otherBtn = other.querySelector(".caseBtn");
-          const otherPanel = other.querySelector(".casePanel");
-          if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
-          if (otherPanel) otherPanel.hidden = true;
-        }
-      });
-
-      card.classList.toggle("is-open", !open);
-      btn.setAttribute("aria-expanded", String(!open));
-      if (panel) panel.hidden = open;
-
-      if (!open) {
-        // Pequeño scroll para que el usuario vea el panel abierto
-        setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
-      }
-    });
-  });
-    // ===== BLOQUE 3: MODAL CERTIFICADOS =====
-  const certModal = document.getElementById("certModal");
-  const certClose = document.getElementById("certClose");
-  const certFrame = document.getElementById("certFrame");
-  const certModalTitle = document.getElementById("certModalTitle");
-  const certModalMeta = document.getElementById("certModalMeta");
-  const certModalVerify = document.getElementById("certModalVerify");
-
-  const closeCertModal = () => {
-    if (!certModal) return;
-    certModal.close();
-    if (certFrame) certFrame.src = ""; // limpia para evitar audio/recursos colgados
-  };
-
-  if (certClose) certClose.addEventListener("click", closeCertModal);
-  if (certModal) {
-    certModal.addEventListener("click", (e) => {
-      if (e.target === certModal) closeCertModal();
-    });
-  }
-
-  const certCards = Array.from(document.querySelectorAll("[data-cert]"));
-  certCards.forEach((card) => {
-    // Spotlight suave reutilizando el mismo patrón de mouse
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-      card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-    });
-
-    const viewBtn = card.querySelector(".certBtn--view");
-    const verifyBtn = card.querySelector(".certBtn--verify");
-
-    const title = card.getAttribute("data-title") || "Certificado";
-    const provider = card.getAttribute("data-provider") || "Institución";
-    const year = card.getAttribute("data-year") || "";
-    const verify = card.getAttribute("data-verify") || "#";
-    const file = card.getAttribute("data-file") || "";
-
-    // Set verify link (aunque sea #, luego lo cambias)
-    if (verifyBtn) verifyBtn.href = verify;
-
-    if (viewBtn) {
-      viewBtn.addEventListener("click", () => {
-        if (!certModal || !certFrame) return;
-
-        certModalTitle.textContent = title;
-        certModalMeta.textContent = `${provider}${year ? " · " + year : ""}`;
-        if (certModalVerify) certModalVerify.href = verify || "#";
-
-        // Si no hay archivo, manda a verificar como fallback
-        if (!file || file === "#") {
-          if (verify && verify !== "#") window.open(verify, "_blank", "noreferrer");
-          return;
-        }
-
-        certFrame.src = file;
-        certModal.showModal();
-      });
-    }
-  });
-    // ===== BLOQUE 4: CONTACTO PRO (COPY + TOAST + FORM MAILTO) =====
-  const toastEl = document.getElementById("toast");
-  let toastTimer = null;
-
-  const showToast = (msg) => {
-    if (!toastEl) return;
-    toastEl.textContent = msg;
-    toastEl.classList.add("toast--show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove("toast--show"), 2400);
-  };
-
-  // Spotlight suave en tarjetas contacto (mismo vibe premium)
-  document.querySelectorAll(".contactCard").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-      card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-    });
-  });
-
-  // Copy buttons
-  document.querySelectorAll("[data-copy]").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const val = btn.getAttribute("data-copy") || "";
-      if (!val) return;
-
-      try {
-        await navigator.clipboard.writeText(val);
-        showToast("Copiado ✅");
-      } catch {
-        // Fallback antiguo
-        const tmp = document.createElement("textarea");
-        tmp.value = val;
-        document.body.appendChild(tmp);
-        tmp.select();
-        document.execCommand("copy");
-        tmp.remove();
-        showToast("Copiado ✅");
-      }
-    });
-  });
-
-  // Prefill "mensaje rápido"
-  const prefillBtn = document.getElementById("prefillBtn");
-  if (prefillBtn) {
-    prefillBtn.addEventListener("click", () => {
-      const subject = document.getElementById("cfSubject");
-      const msg = document.getElementById("cfMsg");
-      if (subject && !subject.value) subject.value = "Oportunidad / Residencia";
-      if (msg && !msg.value) {
-        msg.value =
-`Hola Yoshio,
-
-Vi tu portafolio y me gustaría contactarte por una oportunidad.
-Contexto:
-- Empresa / Proyecto:
-- Modalidad (Remoto/Presencial):
-- Fechas o disponibilidad:
-- Detalles adicionales:
-
-Quedo atento(a).`;
-      }
-      showToast("Mensaje rápido cargado ✨");
-    });
-  }
-
-  // Form mailto handler
-  const form = document.getElementById("contactForm");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById("cfName")?.value.trim() || "";
-      const email = document.getElementById("cfEmail")?.value.trim() || "";
-      const subject = document.getElementById("cfSubject")?.value.trim() || "";
-      const message = document.getElementById("cfMsg")?.value.trim() || "";
-
-      if (!name || !email || !subject || !message) {
-        showToast("Completa todos los campos 🙏");
-        return;
-      }
-
-      const to = "yoshio99@live.com.mx";
-      const mailSubject = encodeURIComponent(`[Portafolio] ${subject}`);
-      const body = encodeURIComponent(
-`Nombre: ${name}
-Correo: ${email}
-
-Mensaje:
-${message}`
-      );
-
-      const mailto = `mailto:${to}?subject=${mailSubject}&body=${body}`;
-      showToast("Abriendo tu correo… 📩");
-
-      // Algunos navegadores prefieren asignación directa
-      window.location.href = mailto;
-    });
-  }
-  }
+  document.head.appendChild(base);
 })();

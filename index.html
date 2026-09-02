@@ -1,935 +1,326 @@
 <!doctype html>
-<html lang="es">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yoshio González | Ingeniería & Datos</title>
-  <meta name="description" content="Portafolio de Yoshio González: Ingeniería de Sistemas, Datos y Automatización." />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020914" />
+  <meta name="description" content="Yoshio Padilla — Computer Systems Engineering focused on SAP, business process automation, data analytics and enterprise technology." />
+  <meta property="og:title" content="Yoshio Padilla | Enterprise Technology & Automation" />
+  <meta property="og:description" content="Where business complexity becomes intelligent systems." />
+  <meta property="og:type" content="website" />
+  <title>Yoshio Padilla | Enterprise Technology & Automation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div class="scrollProgressContainer">
-    <div class="scrollProgressBar" id="scrollBar"></div>
-    <div class="scrollProgressText" id="scrollText">0%</div>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  <div class="page-atmosphere" aria-hidden="true">
+    <div class="atmosphere-glow atmosphere-glow--a"></div>
+    <div class="atmosphere-glow atmosphere-glow--b"></div>
+    <div class="particle-field" id="particleField"></div>
   </div>
 
-  <div class="bgFx" aria-hidden="true">
-    <div class="bgGlow bgGlow--a"></div>
-    <div class="bgGlow bgGlow--b"></div>
-    <div class="bgGrid"></div>
-    <div class="bgNoise"></div>
-  </div>
-
-  <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="#inicio" aria-label="Inicio">
-        <span class="brand__badge">YG</span>
-        <span class="brand__text">Yoshio González</span>
-      </a>
-
-      <nav class="nav">
-        <a class="nav__link" href="#proyectos">Proyectos</a>
-        <a class="nav__link" href="#trayectoria">Trayectoria</a>
-        <a class="nav__link" href="#certificados">Formación</a>
-        <a class="nav__link" href="#contacto">Contacto</a>
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="monogram" href="#home" aria-label="Yoshio Padilla home">YP</a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#perspective" data-i18n="nav.perspective">Perspective</a>
+        <a href="#journey" data-i18n="nav.journey">Journey</a>
+        <a href="#systems" data-i18n="nav.systems">Systems</a>
+        <a href="#capabilities" data-i18n="nav.capabilities">Capabilities</a>
+        <a href="#next" data-i18n="nav.next">Next</a>
       </nav>
-
-      <div class="topbar__right">
-        <div class="social">
-          <a class="social__btn" href="https://www.linkedin.com/in/yoshio-alberto-g-889804291/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M4 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.5 21h3V9h-3v12Zm6 0h3v-6.4c0-1.7.3-3.3 2.4-3.3 2 0 2 1.9 2 3.4V21h3v-6.9c0-3.4-.7-6-4.7-6-1.9 0-3.1 1-3.6 1.9h-.1V9h-2.9v12Z"/></svg>
-          </a>
-          <a class="social__btn" href="#" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .9.1-.6.4-1.1.7-1.3-2.3-.3-4.7-1.1-4.7-5A3.9 3.9 0 0 1 6.6 8.5c-.1-.3-.4-1.3.1-2.6 0 0 .9-.3 2.7 1A9.4 9.4 0 0 1 12 6.6c.8 0 1.6.1 2.4.3 1.8-1.2 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
-          </a>
+      <div class="header-tools">
+        <div class="language-switch" aria-label="Language" data-active="en">
+          <button type="button" data-lang="en" class="is-active">EN</button><span>/</span><button type="button" data-lang="es">ES</button><i aria-hidden="true"></i>
         </div>
-        <a class="btn btn--gold btn--sm" href="#contacto">Contacto</a>
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.7 8.7 0 1 0 20.2 15.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.1M12 19.9V22M4.9 4.9l1.5 1.5m11.2 11.2 1.5 1.5M2 12h2.1M19.9 12H22M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"/></svg>
+        </button>
+        <button type="button" class="button button--header cv-placeholder" data-i18n="nav.cv">Download CV</button>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span><span></span></button>
       </div>
-
-      <button class="burger" aria-label="Menú" aria-expanded="false" type="button">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobileNav" id="mobileNav" hidden>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#trayectoria">Trayectoria</a>
-      <a href="#certificados">Formación</a>
-      <a href="#contacto">Contacto</a>
     </div>
   </header>
 
-  <main id="inicio">
-    <section class="hero wrap">
-      <div class="hero__left">
-        <div class="pill shinyPill fade-in-up delay-100">Estudiante de Ing. en Sistemas • 7º Semestre • TecNM</div>
-
-        <h1 class="hero__title fade-in-up delay-200">
-          Iniciando mi camino en <br />
-          <span class="txt-type" data-wait="2000" data-words='["Análisis de Datos", "Automatización", "Soporte Técnico", "Desarrollo Backend"]'></span>
-          <span class="cursor">|</span>
-        </h1>
-
-        <p class="hero__subtitle fade-in-up delay-300">
-            Soy <strong>Yoshio Padilla</strong>. Busco mi primera oportunidad profesional para aplicar mis conocimientos académicos.
-            Cuento con <strong>disciplina operativa</strong> y un fuerte compromiso por <strong>aprender y sumar</strong> al equipo.
-        </p>
-
-        <div class="hero__actions fade-in-up delay-500">
-          <a class="btn btn--gold" href="assets/CV - Yoshio A González Padilla (Esp).pdf" download>Descargar CV (PDF)</a>
-          <a class="btn btn--ghost" href="#proyectos">Ver mis Prácticas</a>
-        </div>
-
-        <div class="metaRow fade-in-up delay-500">
-          <div class="metaItem holoCard">
-            <div class="holoContent">
-              <span class="metaIcon">
-                <svg viewBox="0 0 24 24" class="icoLine"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 0c3 2.8 3 16.2 0 20M2 12h20M12 2a14 14 0 0 0 0 20" /></svg>
-              </span>
-              <div class="metaText">
-                <div class="metaLabel">Ciudadanía</div>
-                <div class="metaValue">México / UE <span class="metaMini">(Portuguesa)</span></div>
-              </div>
-            </div>
-            <div class="holoBorder"></div> 
-          </div>
-
-          <div class="metaItem holoCard">
-            <div class="holoContent">
-              <span class="metaIcon">
-                <svg viewBox="0 0 24 24" class="icoLine"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><path d="M12 10.5a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z"/></svg>
-              </span>
-              <div class="metaText">
-                <div class="metaLabel">Ubicación</div>
-                <div class="metaValue">Saltillo <span class="metaMini">/ Ramos</span></div>
-              </div>
-              <span class="ping" aria-hidden="true"></span>
-            </div>
-            <div class="holoBorder"></div>
-          </div>
-          
-           <div class="metaItem holoCard">
-            <div class="holoContent">
-              <span class="metaIcon"><svg viewBox="0 0 24 24" class="icoLine"><path d="M2 12h20M2 12l5-5m-5 5 5 5"/></svg></span>
-              <div class="metaText">
-                <div class="metaLabel">Perfil</div>
-                <div class="metaValue">Liderazgo & Tech</div>
-              </div>
-            </div>
-            <div class="holoBorder"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__right fade-in-up delay-500">
-        <div class="halo" aria-hidden="true"></div>
-        
-        <div class="hero__floatingIcons">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" 
-               class="floatIcon floatIcon--1" alt="Python" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" 
-               class="floatIcon floatIcon--2" alt="Power BI" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" 
-               class="floatIcon floatIcon--3" alt="SQL" />
-        </div>
-
-        <div class="portrait">
-          <img src="assets/profile.png" alt="Foto de Yoshio" />
-        </div>
-
-        <div class="radial" aria-hidden="true">
-          <div class="radial__core"></div>
-          <div class="radial__rays"></div>
-        </div>
-      </div>
-
-      <div class="scrollDown">
-        <div class="mouse">
-          <div class="wheel"></div>
-        </div>
-        <div class="scrollText">Scroll</div>
-      </div>
-    </section>
-
-    <div class="sectionLine" aria-hidden="true"></div>
-
-<section class="section wrap" id="proyectos" data-reveal>
-  <h2 class="section__title"><span class="titleDecor">/</span> Proyectos Destacados</h2>
-  <p class="section__subtitle">
-    Casos reales: arquitectura, datos y automatización. Filtra por enfoque para ver lo que te interese.
-  </p>
-
-  <!-- Filtros -->
-  <div class="filterBar" role="tablist" aria-label="Filtros de proyectos">
-    <button class="filterBtn is-active" type="button" data-filter="all" role="tab" aria-selected="true">Todo</button>
-    <button class="filterBtn" type="button" data-filter="backend" role="tab" aria-selected="false">Backend</button>
-    <button class="filterBtn" type="button" data-filter="db" role="tab" aria-selected="false">Bases de Datos</button>
-    <button class="filterBtn" type="button" data-filter="bi" role="tab" aria-selected="false">BI</button>
-    <button class="filterBtn" type="button" data-filter="automation" role="tab" aria-selected="false">Automatización</button>
-    <button class="filterBtn" type="button" data-filter="iot" role="tab" aria-selected="false">IoT</button>
-    <span class="filterCount" id="filterCount" aria-live="polite"></span>
-  </div>
-
-  <div class="projectsStack">
-
-    <!-- ========== PROYECTO 1 ========== -->
-    <article class="projectCard"
-      data-project
-      data-title="LabFlow - Gestión de Laboratorio"
-      data-cats="backend db"
-      data-images="assets/lab_01.jpeg,assets/lab_02.png,assets/lab_03.jpeg.png">
-
-      <div class="projMedia">
-        <div class="projCarousel">
-          <img class="projImg" src="assets/lab_01.jpeg" alt="LabFlow System" />
-
-          <button class="projArrow projArrow--prev" type="button" aria-label="Imagen anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18 9 12l6-6" /></svg>
-          </button>
-          <button class="projArrow projArrow--next" type="button" aria-label="Imagen siguiente">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-          </button>
-
-          <div class="projHUD">
-            <span class="projBadge">Oracle + Flask</span>
-            <span class="projCount">1 / 3</span>
-          </div>
-
-          <div class="projDots" aria-label="Indicadores de imagen"></div>
-        </div>
-      </div>
-
-      <div class="projInfo">
-        <div class="projTop">
-          <h3 class="projTitle">LabFlow - Sistema de Gestión</h3>
-          <div class="projActions">
-            <a class="miniBtn" href="#" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="miniBtn miniBtn--ghost" href="#" target="_blank" rel="noreferrer">Demo</a>
-          </div>
-        </div>
-
-        <p class="projDesc">
-          Sistema integral para inventario y préstamos de laboratorio. Enfoque en trazabilidad, roles y control de operación.
-        </p>
-
-        <div class="projTags">
-          <span class="tag tag--py">Python (Flask)</span>
-          <span class="tag tag--sql">Oracle DB</span>
-          <span class="tag tag--data">Documentación</span>
-        </div>
-
-        <!-- KPIs tipo “pro” (sin inventar números) -->
-        <div class="kpiRow" aria-label="KPIs del proyecto">
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Trazabilidad</div>
-            <div class="kpi__hint">Activos / préstamos / responsables</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Consistencia</div>
-            <div class="kpi__hint">Reglas de negocio + validaciones</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Operación</div>
-            <div class="kpi__hint">Flujos estandarizados</div>
-          </div>
-        </div>
-
-        <button class="caseBtn" type="button" aria-expanded="false">
-          <span>Caso de estudio</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
-        </button>
-
-        <div class="casePanel" hidden>
-          <div class="caseGrid">
-            <div class="caseBlock">
-              <h4>Contexto</h4>
-              <p>Control de inventario, préstamos y responsabilidades en un laboratorio; necesidad de registro confiable y auditable.</p>
-            </div>
-
-            <div class="caseBlock">
-              <h4>Mi rol</h4>
-              <ul>
-                <li>Diseño de flujo y reglas de operación.</li>
-                <li>Integración BD + endpoints + validaciones.</li>
-                <li>Documentación (casos de uso / evidencia).</li>
-              </ul>
-            </div>
-
-            <div class="caseBlock">
-              <h4>Stack</h4>
-              <div class="pillStack">
-                <span class="pill3">Oracle</span>
-                <span class="pill3">Flask</span>
-                <span class="pill3">SQL</span>
-                <span class="pill3">UI/UX</span>
-              </div>
-            </div>
-
-            <div class="caseBlock">
-              <h4>Qué lo hace “serio”</h4>
-              <ul>
-                <li>Roles / permisos</li>
-                <li>Validación de datos</li>
-                <li>Registros auditables</li>
-                <li>Flujos replicables</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </article>
-
-
-    <!-- ========== PROYECTO 2 ========== -->
-    <article class="projectCard"
-      data-project
-      data-title="Hotel Admin Desktop"
-      data-cats="db bi"
-      data-images="assets/hotel_01.png,assets/hotel_02.png,assets/hotel_03.png">
-
-      <div class="projMedia">
-        <div class="projCarousel">
-          <img class="projImg" src="assets/hotel_01.png" alt="Hotel Admin Desktop" />
-
-          <button class="projArrow projArrow--prev" type="button" aria-label="Imagen anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18 9 12l6-6" /></svg>
-          </button>
-          <button class="projArrow projArrow--next" type="button" aria-label="Imagen siguiente">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-          </button>
-
-          <div class="projHUD">
-            <span class="projBadge">Desktop App</span>
-            <span class="projCount">1 / 3</span>
-          </div>
-
-          <div class="projDots" aria-label="Indicadores de imagen"></div>
-        </div>
-      </div>
-
-      <div class="projInfo">
-        <div class="projTop">
-          <h3 class="projTitle">Hotel Admin Desktop</h3>
-          <div class="projActions">
-            <a class="miniBtn" href="#" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </div>
-
-        <p class="projDesc">
-          Aplicación modular para administración de reservas, habitaciones y registros. Pensada para mantenimiento y crecimiento.
-        </p>
-
-        <div class="projTags">
-          <span class="tag tag--py">Python (PySide6)</span>
-          <span class="tag tag--sql">SQL</span>
-          <span class="tag tag--ui">Validación Datos</span>
-        </div>
-
-        <div class="kpiRow" aria-label="KPIs del proyecto">
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Integridad</div>
-            <div class="kpi__hint">Altas/bajas/edición controladas</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Mantenible</div>
-            <div class="kpi__hint">Arquitectura modular</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Escalable</div>
-            <div class="kpi__hint">Módulos por dominio</div>
-          </div>
-        </div>
-
-        <button class="caseBtn" type="button" aria-expanded="false">
-          <span>Caso de estudio</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
-        </button>
-
-        <div class="casePanel" hidden>
-          <div class="caseGrid">
-            <div class="caseBlock">
-              <h4>Contexto</h4>
-              <p>Centralizar operaciones (reservas/habitaciones) con reglas claras y UI amigable para evitar errores.</p>
-            </div>
-            <div class="caseBlock">
-              <h4>Mi rol</h4>
-              <ul>
-                <li>Diseño de módulos y pantallas.</li>
-                <li>Validación de datos y consistencia.</li>
-                <li>Optimización de flujo de captura.</li>
-              </ul>
-            </div>
-            <div class="caseBlock">
-              <h4>Stack</h4>
-              <div class="pillStack">
-                <span class="pill3">PySide6</span>
-                <span class="pill3">SQL</span>
-                <span class="pill3">UX</span>
-              </div>
-            </div>
-            <div class="caseBlock">
-              <h4>Highlights</h4>
-              <ul>
-                <li>Flujos claros y repetibles</li>
-                <li>Reglas por módulo</li>
-                <li>Menos “captura a ojo”</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </article>
-
-
-    <!-- ========== PROYECTO 3 (IoT) ========== -->
-    <article class="projectCard"
-      data-project
-      data-title="IoT - Monitoreo y Reporte"
-      data-cats="iot automation"
-      data-images="assets/iot_01.png">
-
-      <div class="projMedia">
-        <div class="projCarousel">
-          <img class="projImg" src="assets/iot_01.png" alt="Proyecto IoT" />
-
-          <button class="projArrow projArrow--prev" type="button" aria-label="Imagen anterior">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18 9 12l6-6" /></svg>
-          </button>
-          <button class="projArrow projArrow--next" type="button" aria-label="Imagen siguiente">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-          </button>
-
-          <div class="projHUD">
-            <span class="projBadge">IoT + Reporte</span>
-            <span class="projCount">1 / 1</span>
-          </div>
-
-          <div class="projDots" aria-label="Indicadores de imagen"></div>
-        </div>
-      </div>
-
-      <div class="projInfo">
-        <div class="projTop">
-          <h3 class="projTitle">IoT - Monitoreo y Reporte</h3>
-          <div class="projActions">
-            <a class="miniBtn" href="#" target="_blank" rel="noreferrer">Video</a>
-          </div>
-        </div>
-
-        <p class="projDesc">
-          Integración de sensores + captura + exportación de reportes. Orientado a automatizar medición y evidencia.
-        </p>
-
-        <div class="projTags">
-          <span class="tag tag--data">Reporte</span>
-          <span class="tag tag--ui">Dashboard</span>
-          <span class="tag tag--py">Python</span>
-        </div>
-
-        <div class="kpiRow" aria-label="KPIs del proyecto">
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Automático</div>
-            <div class="kpi__hint">Captura + exportación</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Evidencia</div>
-            <div class="kpi__hint">Reportes repetibles</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi__label">Métrica</div>
-            <div class="kpi__value">Monitoreo</div>
-            <div class="kpi__hint">Seguimiento continuo</div>
-          </div>
-        </div>
-
-        <button class="caseBtn" type="button" aria-expanded="false">
-          <span>Caso de estudio</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
-        </button>
-
-        <div class="casePanel" hidden>
-          <div class="caseGrid">
-            <div class="caseBlock">
-              <h4>Contexto</h4>
-              <p>Se necesitaba medir/registrar y generar evidencia sin depender de captura manual.</p>
-            </div>
-            <div class="caseBlock">
-              <h4>Mi rol</h4>
-              <ul>
-                <li>Integración de lectura/captura.</li>
-                <li>Generación de reporte/export.</li>
-                <li>Presentación visual (dashboard).</li>
-              </ul>
-            </div>
-            <div class="caseBlock">
-              <h4>Stack</h4>
-              <div class="pillStack">
-                <span class="pill3">IoT</span>
-                <span class="pill3">Python</span>
-                <span class="pill3">CSV/PDF</span>
-              </div>
-            </div>
-            <div class="caseBlock">
-              <h4>Acción</h4>
-              <p><a class="miniBtn" href="#" target="_blank" rel="noreferrer">Ver video demostración</a></p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </article>
-
-  </div>
-</section>
-
-    <div class="sectionLine" aria-hidden="true"></div>
-
-    <section class="section wrap" id="trayectoria" data-reveal>
-      <h2 class="section__title"><span class="titleDecor">/</span> Trayectoria & Liderazgo</h2>
-      <p class="section__subtitle">Mi experiencia operativa complementa mi perfil de ingeniería, aportando disciplina y gestión.</p>
-
-      <div class="timeline">
-        <div class="timeline__item">
-          <div class="timeline__date">2025 - Actualidad</div>
-          <div class="timeline__content glassCard">
-            <h3>Coordinador de Vinculación y Logística</h3>
-            <span class="timeline__org">ASQ (American Society for Quality) - Capítulo Estudiantil</span>
-            <p>Fortalecimiento del enlace con la industria y gestión de iniciativas de mejora continua. Liderazgo de equipos estudiantiles.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__date">2021 - 2025</div>
-          <div class="timeline__content glassCard">
-            <h3>Diseño y Operación CNC</h3>
-            <span class="timeline__org">Mueblerías López</span>
-            <p>Programación técnica en Vectric Aspire y operación de maquinaria CNC. Coordinación de entregas críticas bajo presión.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__date">2016 - 2020</div>
-          <div class="timeline__content glassCard">
-            <h3>Subgerente / Gestión</h3>
-            <span class="timeline__org">Coppel S.A. de C.V.</span>
-            <p>Supervisión de inventarios, capacitación de personal y manejo de valores. Habilidades de responsabilidad y auditoría.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="sectionLine" aria-hidden="true"></div>
-
-    <section class="section wrap" id="certificados" data-reveal>
-  <h2 class="section__title"><span class="titleDecor">/</span> Formación Elite</h2>
-  <p class="section__subtitle">
-    Certificaciones y programas con evidencia verificable. (Donde aplica, incluyo enlace de validación oficial).
-  </p>
-
-  <div class="certGrid">
-
-    <!-- CERT 1 -->
-    <article class="certCard" data-cert data-title="Galactic Problem Solver"
-      data-provider="NASA Space Apps Challenge"
-      data-year="2025"
-      data-verify="#"
-      data-file="assets/certs/nasa_spaceapps.pdf">
-      <div class="certHead">
-        <div class="certIcon">🚀</div>
-        <div class="certMeta">
-          <h4 class="certTitle">Galactic Problem Solver</h4>
-          <div class="certSub">
-            <span class="certOrg">NASA Space Apps Challenge</span>
-            <span class="certYear">· 2025</span>
-          </div>
-        </div>
-        <span class="certChip">Verificable</span>
-      </div>
-
-      <div class="certActions">
-        <button class="miniBtn certBtn certBtn--view" type="button">Ver certificado</button>
-        <a class="miniBtn miniBtn--ghost certBtn certBtn--verify" href="#" target="_blank" rel="noreferrer">Verificar</a>
-      </div>
-    </article>
-
-    <!-- CERT 2 -->
-    <article class="certCard" data-cert data-title="Microelectrónica y Nanoelectrónica"
-      data-provider="Arizona State University"
-      data-year="2025"
-      data-verify="#"
-      data-file="assets/certs/asu_micro.pdf">
-      <div class="certHead">
-        <div class="certIcon">⚡</div>
-        <div class="certMeta">
-          <h4 class="certTitle">Microelectrónica y Nanoelectrónica</h4>
-          <div class="certSub">
-            <span class="certOrg">Arizona State University</span>
-            <span class="certYear">· 2025</span>
-          </div>
-        </div>
-        <span class="certChip">Verificable</span>
-      </div>
-
-      <div class="certActions">
-        <button class="miniBtn certBtn certBtn--view" type="button">Ver certificado</button>
-        <a class="miniBtn miniBtn--ghost certBtn certBtn--verify" href="#" target="_blank" rel="noreferrer">Verificar</a>
-      </div>
-    </article>
-
-    <!-- CERT 3 -->
-    <article class="certCard" data-cert data-title="Networking Basics"
-      data-provider="Cisco Networking Academy"
-      data-year="2025"
-      data-verify="#"
-      data-file="assets/certs/cisco_networking.pdf">
-      <div class="certHead">
-        <div class="certIcon">🌐</div>
-        <div class="certMeta">
-          <h4 class="certTitle">Networking Basics</h4>
-          <div class="certSub">
-            <span class="certOrg">Cisco Networking Academy</span>
-            <span class="certYear">· 2025</span>
-          </div>
-        </div>
-        <span class="certChip">Verificable</span>
-      </div>
-
-      <div class="certActions">
-        <button class="miniBtn certBtn certBtn--view" type="button">Ver certificado</button>
-        <a class="miniBtn miniBtn--ghost certBtn certBtn--verify" href="#" target="_blank" rel="noreferrer">Verificar</a>
-      </div>
-    </article>
-
-    <!-- CERT 4 (si NO es verificable, quítale el chip o deja verify="#") -->
-    <article class="certCard" data-cert data-title="Business Scholarships"
-      data-provider="Harvard Business Publishing"
-      data-year="2023"
-      data-verify="#"
-      data-file="assets/certs/harvard_business.pdf">
-      <div class="certHead">
-        <div class="certIcon">🎓</div>
-        <div class="certMeta">
-          <h4 class="certTitle">Business Scholarships</h4>
-          <div class="certSub">
-            <span class="certOrg">Harvard Business Publishing</span>
-            <span class="certYear">· 2023</span>
-          </div>
-        </div>
-        <span class="certChip">Verificable</span>
-      </div>
-
-      <div class="certActions">
-        <button class="miniBtn certBtn certBtn--view" type="button">Ver certificado</button>
-        <a class="miniBtn miniBtn--ghost certBtn certBtn--verify" href="#" target="_blank" rel="noreferrer">Verificar</a>
-      </div>
-    </article>
-
-    <!-- CERT 5 -->
-    <article class="certCard" data-cert data-title="Frontend Asistido con IA"
-      data-provider="DEV.F + Bécalos"
-      data-year="2024"
-      data-verify="#"
-      data-file="assets/certs/devf_frontend.pdf">
-      <div class="certHead">
-        <div class="certIcon">💻</div>
-        <div class="certMeta">
-          <h4 class="certTitle">Frontend Asistido con IA</h4>
-          <div class="certSub">
-            <span class="certOrg">DEV.F + Bécalos</span>
-            <span class="certYear">· 2024</span>
-          </div>
-        </div>
-        <span class="certChip">Verificable</span>
-      </div>
-
-      <div class="certActions">
-        <button class="miniBtn certBtn certBtn--view" type="button">Ver certificado</button>
-        <a class="miniBtn miniBtn--ghost certBtn certBtn--verify" href="#" target="_blank" rel="noreferrer">Verificar</a>
-      </div>
-    </article>
-
-    <!-- CERT 6 -->
-    <article class="certCard" data-cert data-title="Inglés B2 / Chino Principiante"
-      data-provider="Certificación Europea / Hangzhou Dianzi Univ."
-      data-year="2024"
-      data-verify="#"
-      data-file="assets/certs/idiomas.pdf">
-      <div class="certHead">
-        <div class="certIcon">🗣️</div>
-        <div class="certMeta">
-          <h4 class="certTitle">Inglés B2 / Chino Principiante</h4>
-          <div class="certSub">
-            <span class="certOrg">Certificación Europea / Hangzhou Dianzi Univ.</span>
-            <span class="certYear">· 2024</span>
-          </div>
-        </div>
-        <span class="certChip">Verificable</span>
-      </div>
-
-      <div class="certActions">
-        <button class="miniBtn certBtn certBtn--view" type="button">Ver certificado</button>
-        <a class="miniBtn miniBtn--ghost certBtn certBtn--verify" href="#" target="_blank" rel="noreferrer">Verificar</a>
-      </div>
-    </article>
-
-  </div>
-
-  <div class="certNote">
-    Tip: Puedes subir tus certificados en <span class="certNote__strong">PDF o imagen</span> dentro de <span class="certNote__strong">assets/certs/</span>
-    y pegar el link oficial en <span class="certNote__strong">data-verify</span>.
-  </div>
-</section>
-
-    <div class="sectionLine" aria-hidden="true"></div>
-
-    <section class="section wrap" id="skills" data-reveal>
-    <h2 class="section__title"><span class="titleDecor">/</span> Tech Stack</h2>
-    <p class="section__subtitle">
-        Herramientas que uso para construir, analizar y automatizar. (Agrupadas para que se entienda rápido).
-    </p>
-
-    <div class="stackGrid">
-
-        <div class="stackCard">
-        <div class="stackTop">
-            <h4>Backend & Automatización</h4>
-            <span class="stackBadge">Productividad</span>
-        </div>
-        <div class="stackPills">
-            <span class="pill2">Python</span>
-            <span class="pill2">Flask</span>
-            <span class="pill2">Scripting</span>
-            <span class="pill2">APIs</span>
-        </div>
-        <p class="stackHint">Enfoque: resolver tareas repetitivas y construir servicios funcionales.</p>
-        </div>
-
-        <div class="stackCard">
-        <div class="stackTop">
-            <h4>Datos & Bases de Datos</h4>
-            <span class="stackBadge">Consistencia</span>
-        </div>
-        <div class="stackPills">
-            <span class="pill2">Oracle SQL</span>
-            <span class="pill2">SQL</span>
-            <span class="pill2">Modelado</span>
-            <span class="pill2">Validación</span>
-        </div>
-        <p class="stackHint">Enfoque: integridad, reglas de negocio y trazabilidad.</p>
-        </div>
-
-        <div class="stackCard">
-        <div class="stackTop">
-            <h4>BI & Análisis</h4>
-            <span class="stackBadge">Insights</span>
-        </div>
-        <div class="stackPills">
-            <span class="pill2">Power BI</span>
-            <span class="pill2">Excel Avanzado</span>
-            <span class="pill2">Dashboards</span>
-            <span class="pill2">KPIs</span>
-        </div>
-        <p class="stackHint">Enfoque: convertir datos en decisiones y visualizaciones claras.</p>
-        </div>
-
-        <div class="stackCard">
-        <div class="stackTop">
-            <h4>Entorno & Ingeniería</h4>
-            <span class="stackBadge">Operación</span>
-        </div>
-        <div class="stackPills">
-            <span class="pill2">Linux</span>
-            <span class="pill2">Git / GitHub</span>
-            <span class="pill2">AutoCAD</span>
-            <span class="pill2">SolidWorks</span>
-        </div>
-        <p class="stackHint">Enfoque: disciplina operativa y flujo de trabajo reproducible.</p>
-        </div>
-
+  <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <div class="mobile-panel__top"><span class="mobile-mark">YP</span><button class="mobile-close" type="button" aria-label="Close menu">×</button></div>
+    <nav aria-label="Mobile navigation">
+      <a href="#perspective" data-i18n="nav.perspective">Perspective</a>
+      <a href="#journey" data-i18n="nav.journey">Journey</a>
+      <a href="#systems" data-i18n="nav.systems">Systems</a>
+      <a href="#capabilities" data-i18n="nav.capabilities">Capabilities</a>
+      <a href="#next" data-i18n="nav.next">Next</a>
+    </nav>
+    <div class="mobile-panel__footer">
+      <div class="language-switch language-switch--mobile"><button type="button" data-lang="en" class="is-active">EN</button><span>/</span><button type="button" data-lang="es">ES</button></div>
+      <button type="button" class="button cv-placeholder" data-i18n="nav.cv">Download CV</button>
     </div>
+  </aside>
+  <button class="panel-scrim" type="button" aria-label="Close menu" hidden></button>
 
-    <div class="ctaStrip">
-        <div class="ctaStrip__text">
-        <strong>¿Quieres ver evidencia?</strong> Puedo compartir repositorios, capturas y documentación por proyecto.
+  <main>
+    <section class="hero shell" id="home">
+      <svg class="signal-lines" viewBox="0 0 1200 690" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="signalGradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity="0"/><stop offset=".45" stop-color="currentColor" stop-opacity=".45"/><stop offset="1" stop-color="currentColor" stop-opacity=".04"/></linearGradient></defs>
+        <path class="signal-path signal-path--1" d="M-80 115 C170 55 350 180 585 100 S990 45 1285 145" />
+        <path class="signal-path signal-path--2" d="M-100 150 C155 86 350 224 610 130 S1010 78 1290 177" />
+        <path class="signal-path signal-path--3" d="M-100 184 C140 122 362 262 630 158 S1025 111 1300 210" />
+        <path class="signal-path signal-path--4" d="M120 650 C310 555 420 495 548 360 S805 175 1110 250" />
+        <circle class="signal-pulse" r="3"><animateMotion dur="7s" repeatCount="indefinite" path="M-80 115 C170 55 350 180 585 100 S990 45 1285 145" /></circle>
+      </svg>
+
+      <div class="hero-copy" data-enter="1">
+        <div class="citizenship-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h8.5A2.5 2.5 0 0 1 18 6v14H7a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2Z"/><path d="M8.5 8.5h6M8.5 12h6M9 16h2.5"/><circle cx="15.5" cy="16" r="1.5"/></svg><span data-i18n="hero.citizen">EU Citizen · Portuguese & Mexican</span></div>
+        <h1>Yoshio Padilla</h1>
+        <p class="discipline" data-i18n="hero.discipline">Computer Systems Engineering</p>
+        <p class="focus">SAP <span>·</span> Business Process Automation <span>·</span> Data Analytics</p>
+        <blockquote data-i18n="hero.statement">Where business complexity becomes intelligent systems.</blockquote>
+        <p class="hero-summary" data-i18n="hero.summary">Combining enterprise processes, automation and data to build practical digital solutions across procurement, logistics and manufacturing environments.</p>
+        <div class="hero-actions"><a class="button button--primary" href="#systems" data-i18n="hero.work">Explore my work</a><button type="button" class="button button--secondary cv-placeholder" data-i18n="nav.cv">Download CV</button></div>
+        <div class="social-links" aria-label="Professional profiles">
+          <a href="https://www.linkedin.com/in/yoshio-p-889804291/" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5V20M5 4.4v.1M10 20v-6.3c0-2.5 4-3.2 4-0.1V20M10 10v10M14 13.1c.7-2.2 5-3.1 5 1.2V20"/></svg>LinkedIn</a>
+          <a href="https://github.com/YosPadilla" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.4 1.4-4.4-2.4-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7A5.2 5.2 0 0 0 18.8 5 4.8 4.8 0 0 0 18.7 1S17.6.6 15 2.5a13.4 13.4 0 0 0-6 0C6.4.6 5.3 1 5.3 1A4.8 4.8 0 0 0 5.2 5a5.2 5.2 0 0 0-1.4 3.8c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>GitHub</a>
         </div>
-        <a class="btn btn--gold btn--sm" href="#contacto">Hablemos</a>
-    </div>
+      </div>
+
+      <div class="hero-portrait" data-enter="2">
+        <div class="portrait-orbit portrait-orbit--one" aria-hidden="true"></div><div class="portrait-orbit portrait-orbit--two" aria-hidden="true"></div>
+        <div class="portrait-panel" id="portraitPanel">
+          <div class="portrait-grid" aria-hidden="true"></div><div class="portrait-halo" aria-hidden="true"></div>
+          <img src="assets/yoshio-portrait-cutout.webp" alt="Portrait of Yoshio Padilla" />
+          <div class="eu-float"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg><div><span data-i18n="hero.authorized">EU Work Authorized</span><strong data-i18n="hero.sponsorship">No sponsorship required</strong></div></div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#perspective" aria-label="Scroll to perspective"><span></span></a>
     </section>
 
+    <div class="chapter-transition chapter-transition--hero" aria-hidden="true"><span></span><i></i></div>
 
-    <div class="sectionLine" aria-hidden="true"></div>
-
-    <section class="section wrap" id="contacto" data-reveal>
-    <h2 class="section__title"><span class="titleDecor">/</span> Contacto</h2>
-    <p class="section__subtitle">Disponible para proyectos, residencias o vacantes. (Saltillo / Remoto).</p>
-
-    <div class="contactGrid">
-
-        <!-- Columna izquierda: Acciones rápidas + copia -->
-        <aside class="contactCard">
-        <div class="contactCard__top">
-            <div class="contactCard__title">Acciones rápidas</div>
-            <div class="contactCard__mini">Respuesta rápida = más entrevistas. Así funciona este universo.</div>
+    <section class="chapter perspective" id="perspective">
+      <div class="shell">
+        <div class="chapter-head reveal">
+          <span class="chapter-index">01 / <span data-i18n="perspective.label">PERSPECTIVE</span></span>
+          <p class="chapter-overline" data-i18n="perspective.overline">THE OPERATING PRINCIPLE</p>
+          <h2 data-i18n="perspective.title">Technology is more valuable when you understand the operation behind it.</h2>
+        </div>
+        <div class="perspective-grid">
+          <div class="perspective-copy reveal">
+            <p data-i18n="perspective.p1">My path moved through customer-facing operations, materials, manufacturing and enterprise technology. Each stage added a different way of seeing a business: customers reveal needs, materials reveal flow, manufacturing reveals constraints, and systems reveal where complexity can be redesigned.</p>
+            <p data-i18n="perspective.p2">Today I bring those layers together through SAP, automation and data — translating operational friction into practical digital solutions.</p>
+          </div>
+          <aside class="perspective-manifesto reveal">
+            <span data-i18n="perspective.manifestoLabel">How I think</span>
+            <blockquote data-i18n="perspective.manifesto">Understand the process. Find the friction. Build the system. Measure the change.</blockquote>
+          </aside>
         </div>
 
-        <div class="contactRows">
-            <div class="contactRow">
-            <div class="contactRow__left">
-                <span class="contactK">Email</span>
-                <a class="contactV" href="mailto:yoshio99@live.com.mx">yoshio99@live.com.mx</a>
-            </div>
-            <button class="copyBtn" type="button" data-copy="yoshio99@live.com.mx" aria-label="Copiar email">Copiar</button>
-            </div>
+        <div class="three-worlds" aria-label="Three dimensions of the profile">
+          <article class="world reveal" data-world="business">
+            <div class="world-number">01</div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11M8 20v-5h8v5M8 10h.01M12 10h.01M16 10h.01"/></svg>
+            <h3 data-i18n="world.business">Business Processes</h3>
+            <p>Procurement · Logistics · Manufacturing · Inventory</p>
+            <span class="world-line" aria-hidden="true"></span>
+          </article>
+          <article class="world reveal" data-world="enterprise">
+            <div class="world-number">02</div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9h4M7 12h7"/></svg>
+            <h3 data-i18n="world.enterprise">Enterprise Technology</h3>
+            <p>SAP GUI · ERP Workflows · Power Platform · Automation</p>
+            <span class="world-line" aria-hidden="true"></span>
+          </article>
+          <article class="world reveal" data-world="data">
+            <div class="world-number">03</div>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/><path d="M2 19h20"/></svg>
+            <h3 data-i18n="world.data">Data & Intelligence</h3>
+            <p>Python · Power BI · SQL · Generative AI</p>
+            <span class="world-line" aria-hidden="true"></span>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="contactRow">
-            <div class="contactRow__left">
-                <span class="contactK">Tel.</span>
-                <a class="contactV" href="tel:+528444484848">+52 844 448 4848</a>
-            </div>
-            <button class="copyBtn" type="button" data-copy="+528444484848" aria-label="Copiar teléfono">Copiar</button>
-            </div>
+    <div class="chapter-transition" aria-hidden="true"><span></span><i></i></div>
 
-            <div class="contactRow">
-            <div class="contactRow__left">
-                <span class="contactK">WhatsApp</span>
-                <a class="contactV" target="_blank" rel="noreferrer"
-                href="https://wa.me/528444484848?text=Hola%20Yoshio,%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20contactarte%20por%20una%20oportunidad.">
-                Enviar mensaje
-                </a>
-            </div>
-            <span class="contactPill">Rápido</span>
-            </div>
+    <section class="chapter journey" id="journey">
+      <div class="shell journey-shell">
+        <div class="journey-intro reveal">
+          <span class="chapter-index">02 / <span data-i18n="journey.label">THE JOURNEY</span></span>
+          <p class="chapter-overline" data-i18n="journey.overline">FROM OPERATIONS TO SYSTEMS</p>
+          <h2 data-i18n="journey.title">Four environments. One increasingly connected view of business.</h2>
+          <p data-i18n="journey.intro">The value is not in having worked in different industries. It is in what each one taught me to see.</p>
         </div>
 
-        <div class="contactQuick">
-            <a class="miniBtn" href="assets/CV - Yoshio A González Padilla (Esp).pdf" download>Descargar CV</a>
+        <div class="journey-layout">
+          <div class="journey-rail" aria-hidden="true"><span class="journey-progress" id="journeyProgress"></span></div>
+          <div class="journey-years" aria-hidden="true">
+            <button type="button" class="journey-year is-active" data-journey-target="coppel">2016</button>
+            <button type="button" class="journey-year" data-journey-target="phoenix">2020</button>
+            <button type="button" class="journey-year" data-journey-target="mueblerias">2021</button>
+            <button type="button" class="journey-year" data-journey-target="mls">2026</button>
+          </div>
+          <div class="journey-stories">
+            <article class="journey-story" id="coppel" data-journey="coppel">
+              <div class="story-meta"><span>2016 — 2020</span><strong>Coppel · Electronics</strong></div>
+              <h3 data-i18n="journey.coppel.title">Customers taught me that technology starts with people.</h3>
+              <p data-i18n="journey.coppel.copy">Leading a retail electronics area meant balancing customer needs, sales goals, inventory, warranties, merchandising and team development. It built the customer-facing and communication layer that technical work alone cannot teach.</p>
+              <div class="story-signal"><span data-i18n="journey.learned">What stayed with me</span><strong data-i18n="journey.coppel.signal">Listen first. Solve second.</strong></div>
+            </article>
+            <article class="journey-story" id="phoenix" data-journey="phoenix">
+              <div class="story-meta"><span>2020</span><strong>Phoenix de México · Materials</strong></div>
+              <h3 data-i18n="journey.phoenix.title">Materials taught me that flow is a system.</h3>
+              <p data-i18n="journey.phoenix.copy">Warehouse operations exposed the hidden choreography behind production: inbound material, FIFO discipline, inventory control, replenishment and people moving in sync. A bottleneck is rarely isolated; it propagates.</p>
+              <div class="story-signal"><span data-i18n="journey.learned">What stayed with me</span><strong data-i18n="journey.phoenix.signal">Design the flow, not only the task.</strong></div>
+            </article>
+            <article class="journey-story" id="mueblerias" data-journey="mueblerias">
+              <div class="story-meta"><span>2021 — 2025</span><strong>Mueblerías López · Manufacturing</strong></div>
+              <h3 data-i18n="journey.mueblerias.title">Manufacturing taught me that constraints create better decisions.</h3>
+              <p data-i18n="journey.mueblerias.copy">Translating customer requirements into CNC-ready production meant thinking about dimensions, materials, cost, waste and execution at the same time. A good design is not just correct — it is manufacturable.</p>
+              <div class="story-signal"><span data-i18n="journey.learned">What stayed with me</span><strong data-i18n="journey.mueblerias.signal">A solution has to survive reality.</strong></div>
+            </article>
+            <article class="journey-story" id="mls" data-journey="mls">
+              <div class="story-meta"><span>2026 — Present</span><strong>ml&amp;s México · Enterprise Automation</strong></div>
+              <h3 data-i18n="journey.mls.title">Enterprise systems taught me how to connect the layers.</h3>
+              <p data-i18n="journey.mls.copy">SAP GUI, Python, Power Platform and data work gave me the tools to turn operational knowledge into repeatable systems: automate a master-data workflow, structure a document audit, centralize procurement tracking, and make status visible.</p>
+              <div class="story-signal"><span data-i18n="journey.learned">What stayed with me</span><strong data-i18n="journey.mls.signal">Complexity becomes manageable when the process becomes visible.</strong></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <a class="miniBtn miniBtn--ghost" href="https://www.linkedin.com/in/yoshio-alberto-g-889804291/" target="_blank" rel="noreferrer">
-            LinkedIn
-            </a>
+    <div class="chapter-transition chapter-transition--bright" aria-hidden="true"><span></span><i></i></div>
 
-            <a class="miniBtn miniBtn--ghost" href="#" target="_blank" rel="noreferrer">
-            GitHub
-            </a>
+    <section class="chapter systems" id="systems">
+      <div class="shell">
+        <div class="systems-intro reveal">
+          <div><span class="chapter-index">03 / <span data-i18n="systems.label">SELECTED SYSTEMS</span></span><p class="chapter-overline" data-i18n="systems.overline">BUILD THE CHANGE</p></div>
+          <h2 data-i18n="systems.title">Not a gallery of tools. A set of problems turned into systems.</h2>
+          <p data-i18n="systems.intro">Professional case studies stay intentionally high-level. The purpose here is to show the problem, the reasoning and the shape of the solution — without exposing confidential company data or source code.</p>
         </div>
 
-        <div class="contactFoot">
-            <div class="contactFoot__hint">
-            <strong>Tip de reclutador:</strong> si copias mi email y lo pegas directo, respondo más rápido.
-            </div>
-        </div>
-        </aside>
-
-        <!-- Columna derecha: Formulario -->
-        <article class="contactCard contactCard--form">
-        <div class="contactCard__top">
-            <div class="contactCard__title">Envíame un mensaje</div>
-            <div class="contactCard__mini">Se envía por correo (sin backend) con el formato ya listo.</div>
-        </div>
-
-        <form id="contactForm" class="contactForm" novalidate>
-            <div class="formGrid">
-            <div class="field">
-                <label class="label" for="cfName">Nombre</label>
-                <input id="cfName" class="input" type="text" name="name" placeholder="Tu nombre" required />
-            </div>
-
-            <div class="field">
-                <label class="label" for="cfEmail">Correo</label>
-                <input id="cfEmail" class="input" type="email" name="email" placeholder="tu@correo.com" required />
-            </div>
-            </div>
-
-            <div class="field">
-            <label class="label" for="cfSubject">Asunto</label>
-            <input id="cfSubject" class="input" type="text" name="subject" placeholder="Ej. Residencia / Vacante / Proyecto" required />
-            </div>
-
-            <div class="field">
-            <label class="label" for="cfMsg">Mensaje</label>
-            <textarea id="cfMsg" class="textarea" name="message" rows="6" placeholder="Cuéntame el contexto y cómo puedo ayudarte." required></textarea>
-            </div>
-
-            <div class="formActions">
-            <button class="btn btn--gold" type="submit">Enviar mensaje</button>
-            <button class="btn btn--ghost" type="button" id="prefillBtn">Mensaje rápido</button>
-            </div>
-
-            <div class="formFinePrint">
-            Al enviar, se abrirá tu app de correo con el mensaje armado. (Cero fricción, cero drama).
-            </div>
-        </form>
+        <article class="system-story system-story--sap reveal" data-system="sap">
+          <div class="system-copy">
+            <div class="system-label"><span>01</span><b data-i18n="systems.private">Professional case study · Private</b></div>
+            <h3 data-i18n="systems.sap.title">SAP Material Master Automation</h3>
+            <p data-i18n="systems.sap.copy">A recurring material-master process became a validation-first automation built around SAP GUI Scripting and Python. The important change was not only speed: incomplete inputs could be surfaced before they became execution problems.</p>
+            <div class="system-tech"><span>SAP GUI</span><span>MM01/MM02</span><span>Python</span><span>Validation</span></div>
+            <button class="case-toggle" type="button" aria-expanded="false" data-case="sap"><span data-i18n="systems.case">View case study</span><i>+</i></button>
+            <div class="case-detail" id="case-sap" hidden><div><span data-i18n="case.challenge">Challenge</span><p data-i18n="systems.sap.challenge">Manual repetition, incomplete source data and avoidable rework.</p></div><div><span data-i18n="case.approach">Approach</span><p data-i18n="systems.sap.approach">Validate first, automate the repeatable SAP sequence, then wrap it in a friendlier interface.</p></div><div><span data-i18n="case.outcome">Outcome</span><p data-i18n="systems.sap.outcome">A recurring workflow that became faster, repeatable and easier to execute consistently.</p></div></div>
+          </div>
+          <div class="micro-ui sap-ui" aria-label="Illustrative SAP automation workflow">
+            <div class="micro-window-bar"><span></span><span></span><span></span><b>material_master.flow</b></div>
+            <div class="sap-input"><span>Part number</span><strong>6008•••</strong><i class="status-ok">✓</i></div>
+            <div class="sap-input"><span>Material type</span><strong>ZCMP</strong><i class="status-ok">✓</i></div>
+            <div class="sap-input"><span>Costing flag</span><strong>Validated</strong><i class="status-ok">✓</i></div>
+            <div class="sap-run"><div class="sap-run-head"><span>Execution</span><b>MM01 → MM02</b></div><div class="process-track"><i></i></div><div class="process-steps"><span class="is-done">Input</span><span class="is-done">Validate</span><span>SAP GUI</span><span>Complete</span></div></div>
+          </div>
         </article>
 
-    </div>
+        <article class="system-story system-story--audit system-story--reverse reveal" data-system="audit">
+          <div class="system-copy">
+            <div class="system-label"><span>02</span><b data-i18n="systems.private">Professional case study · Private</b></div>
+            <h3 data-i18n="systems.audit.title">Electronic Customs Records Audit</h3>
+            <p data-i18n="systems.audit.copy">A document-heavy manual review was reframed as a classification and evidence problem. The workflow recursively inspects fragmented archives, identifies key documents, cross-checks information and produces a traceable audit output.</p>
+            <div class="system-tech"><span>Python</span><span>OCR</span><span>Business Rules</span><span>Excel</span></div>
+            <button class="case-toggle" type="button" aria-expanded="false" data-case="audit"><span data-i18n="systems.case">View case study</span><i>+</i></button>
+            <div class="case-detail" id="case-audit" hidden><div><span data-i18n="case.challenge">Challenge</span><p data-i18n="systems.audit.challenge">Evidence was distributed across folders, compressed files and different document types.</p></div><div><span data-i18n="case.approach">Approach</span><p data-i18n="systems.audit.approach">Classify, deduplicate, extract, cross-check and preserve evidence for human review.</p></div><div><span data-i18n="case.outcome">Outcome</span><p data-i18n="systems.audit.outcome">Manual inspection became a structured exception-driven review with traceable results.</p></div></div>
+          </div>
+          <div class="micro-ui audit-ui" aria-label="Illustrative document audit workflow">
+            <div class="micro-window-bar"><span></span><span></span><span></span><b>evidence_audit</b></div>
+            <div class="document-queue">
+              <div class="doc-chip" style="--delay:0ms"><i>PDF</i><span>Commercial invoice</span><b>Found</b></div>
+              <div class="doc-chip" style="--delay:90ms"><i>PDF</i><span>Customs declaration</span><b>Found</b></div>
+              <div class="doc-chip" style="--delay:180ms"><i>XML</i><span>Transmission evidence</span><b>Review</b></div>
+              <div class="doc-chip" style="--delay:270ms"><i>PDF</i><span>Expense account</span><b>Found</b></div>
+            </div>
+            <div class="audit-result"><span>Audit output</span><strong>Evidence mapped → Exceptions surfaced</strong></div>
+          </div>
+        </article>
+
+        <article class="system-story system-story--power reveal" data-system="power">
+          <div class="system-copy">
+            <div class="system-label"><span>03</span><b data-i18n="systems.private">Professional case study · Private</b></div>
+            <h3 data-i18n="systems.power.title">Procurement & Logistics Workflow</h3>
+            <p data-i18n="systems.power.copy">Email and message-based tracking became a role-aware workflow for purchasing documentation, required files, operational status and audit history — giving users one place to see what was happening.</p>
+            <div class="system-tech"><span>Power Apps</span><span>Microsoft Lists</span><span>Power Automate</span><span>Power BI</span></div>
+            <button class="case-toggle" type="button" aria-expanded="false" data-case="power"><span data-i18n="systems.case">View case study</span><i>+</i></button>
+            <div class="case-detail" id="case-power" hidden><div><span data-i18n="case.challenge">Challenge</span><p data-i18n="systems.power.challenge">Status, documents and follow-up lived across disconnected messages and email threads.</p></div><div><span data-i18n="case.approach">Approach</span><p data-i18n="systems.power.approach">Centralize the record, enforce required documentation, apply roles and make status visible.</p></div><div><span data-i18n="case.outcome">Outcome</span><p data-i18n="systems.power.outcome">A shared operational view with stronger traceability and less searching for context.</p></div></div>
+          </div>
+          <div class="micro-ui flow-ui" aria-label="Illustrative procurement workflow">
+            <div class="micro-window-bar"><span></span><span></span><span></span><b>procurement_flow</b></div>
+            <div class="flow-columns">
+              <div class="flow-node"><small>01</small><strong>Request</strong><span>Email / message</span></div>
+              <div class="flow-connector"><i></i></div>
+              <div class="flow-node flow-node--accent"><small>02</small><strong>Central record</strong><span>Docs + roles + status</span></div>
+              <div class="flow-connector"><i></i></div>
+              <div class="flow-node"><small>03</small><strong>Visibility</strong><span>Dashboard / audit trail</span></div>
+            </div>
+            <div class="status-strip"><span>Pending</span><span>In process</span><span>Closed</span></div>
+          </div>
+        </article>
+
+        <article class="system-story system-story--lab system-story--reverse reveal" data-system="lab">
+          <div class="system-copy">
+            <div class="system-label"><span>04</span><b data-i18n="systems.public">Public project</b></div>
+            <h3 data-i18n="systems.lab.title">Laboratory Management System</h3>
+            <p data-i18n="systems.lab.copy">A web application for access control and student registration in an Electronics / Analog laboratory, with administrator roles, validation rules and Oracle-backed records.</p>
+            <div class="system-tech"><span>Python</span><span>Flask</span><span>Oracle Database</span><span>HTML/CSS</span></div>
+            <a class="case-link" href="https://github.com/YosPadilla/Sistema-para-Laboratorio-Electr-nica-Anal-gica" target="_blank" rel="noreferrer"><span data-i18n="systems.repo">View repository</span><i>↗</i></a>
+          </div>
+          <div class="micro-ui lab-ui">
+            <img src="assets/lab_01.jpeg" alt="Laboratory management system interface" />
+            <div class="lab-overlay"><span>Public project</span><strong>Role-based laboratory access</strong></div>
+          </div>
+        </article>
+
+        <div class="exploration-strip reveal">
+          <div><span class="chapter-overline" data-i18n="explore.label">EXPLORATION & ENGINEERING</span><h3 data-i18n="explore.title">Curiosity still has a place — just not at the center of the story.</h3></div>
+          <div class="exploration-items"><span>NASA Space Apps</span><span>IoT / IIoT</span><span>Data experiments</span><span>AI-assisted prototyping</span></div>
+        </div>
+      </div>
     </section>
 
-    <footer class="footer wrap">
-      <span>© <span id="year"></span> Yoshio González</span>
-      <span class="muted">Hecho con código, café y disciplina.</span>
-    </footer>
+    <div class="chapter-transition" aria-hidden="true"><span></span><i></i></div>
+
+    <section class="chapter capabilities" id="capabilities">
+      <div class="shell">
+        <div class="capabilities-head reveal"><div><span class="chapter-index">04 / <span data-i18n="cap.label">CAPABILITIES</span></span><p class="chapter-overline" data-i18n="cap.overline">THE OPERATING STACK</p></div><h2 data-i18n="cap.title">Tools matter. Context determines what they become.</h2></div>
+        <div class="capability-matrix">
+          <div class="cap-row reveal"><span class="cap-index">01</span><h3>SAP & Enterprise</h3><p>SAP GUI · MM01/MM02 · Material Master · ERP workflows</p><i></i></div>
+          <div class="cap-row reveal"><span class="cap-index">02</span><h3>Automation</h3><p>Python · SAP GUI Scripting · Power Automate · Excel automation</p><i></i></div>
+          <div class="cap-row reveal"><span class="cap-index">03</span><h3>Data</h3><p>Power BI · Power Query · DAX · SQL · Excel</p><i></i></div>
+          <div class="cap-row reveal"><span class="cap-index">04</span><h3>Low-code</h3><p>Power Apps · Microsoft Lists · SharePoint · Process workflows</p><i></i></div>
+          <div class="cap-row reveal"><span class="cap-index">05</span><h3>Business context</h3><p>Procurement · Logistics · Manufacturing · Inventory · Customer operations</p><i></i></div>
+          <div class="cap-row reveal"><span class="cap-index">06</span><h3>AI-assisted work</h3><p>Problem framing · Prototyping · Documentation · Context engineering · Validation</p><i></i></div>
+        </div>
+
+        <div class="education-brief reveal">
+          <div><span class="chapter-overline" data-i18n="education.label">EDUCATION</span><h3>Computer Systems Engineering</h3><p>Instituto Tecnológico de Saltillo · Expected Dec 2026</p></div>
+          <div><span class="chapter-overline" data-i18n="education.training">SELECTED TRAINING</span><h3>SAP Learning Hub</h3><p>SAP S/4HANA & ERP learning path · In progress</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-transition chapter-transition--final" aria-hidden="true"><span></span><i></i></div>
+
+    <section class="chapter next" id="next">
+      <div class="shell next-inner reveal">
+        <div class="next-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 0c3 2.8 3 16.2 0 20M2 12h20M12 2a14 14 0 0 0 0 20"/></svg><span data-i18n="next.badge">EU Citizen · No sponsorship required</span></div>
+        <span class="chapter-index">05 / <span data-i18n="next.label">NEXT</span></span>
+        <h2 data-i18n="next.title">Ready to build what comes next.</h2>
+        <p data-i18n="next.copy">Open to SAP, enterprise technology, business process transformation and customer-facing technology opportunities across Europe.</p>
+        <div class="next-actions"><a class="button button--primary" href="mailto:yoshio99@live.com.mx" data-i18n="next.email">Email me</a><a class="button button--secondary" href="https://www.linkedin.com/in/yoshio-p-889804291/" target="_blank" rel="noreferrer">LinkedIn ↗</a><button type="button" class="button button--secondary cv-placeholder" data-i18n="nav.cv">Download CV</button></div>
+        <div class="next-signature">Yoshio Padilla <span>·</span> <a href="https://github.com/YosPadilla" target="_blank" rel="noreferrer">GitHub</a></div>
+      </div>
+    </section>
   </main>
 
-  <!-- Lightbox PRO -->
-  <dialog id="imageModal" class="lightbox" aria-label="Visor de imágenes">
-    <div class="lightbox__content" role="document">
-      <button id="closeModal" class="lightbox__close" aria-label="Cerrar (Esc)" type="button">×</button>
-
-      <button id="lightboxPrev" class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Imagen anterior (←)">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18 9 12l6-6" /></svg>
-      </button>
-
-      <img id="lightboxImg" src="" alt="Vista ampliada" />
-
-      <button id="lightboxNext" class="lightbox__nav lightbox__nav--next" type="button" aria-label="Imagen siguiente (→)">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-      </button>
-
-      <div class="lightbox__hud" aria-hidden="true">
-        <span id="lightboxMeta" class="lightbox__meta">Galería</span>
-        <span id="lightboxCount" class="lightbox__count">1 / 1</span>
-      </div>
-
-      <p id="lightboxCaption" class="lightbox__caption">Esc para cerrar • ← → para navegar</p>
-    </div>
-  </dialog>
-
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
-  <dialog id="certModal" class="certModal">
-  <div class="certModal__inner">
-    <button id="certClose" class="certModal__close" aria-label="Cerrar">×</button>
-
-    <div class="certModal__head">
-      <div>
-        <div id="certModalTitle" class="certModal__title">Certificado</div>
-        <div id="certModalMeta" class="certModal__meta">Institución · Año</div>
-      </div>
-      <a id="certModalVerify" class="miniBtn" href="#" target="_blank" rel="noreferrer">Verificar</a>
-    </div>
-
-    <div class="certModal__viewer">
-      <iframe id="certFrame" title="Vista del certificado" loading="lazy"></iframe>
-    </div>
-
-    <div class="certModal__hint">
-      Tip: Si no carga el PDF por el navegador, abre el archivo en una pestaña nueva o usa imagen (PNG/JPG).
-    </div>
-  </div>
-</dialog>
-<div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>
